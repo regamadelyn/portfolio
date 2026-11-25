@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+import { size } from '../lib/images';
+import { url } from '../lib/url';
+
+const cards = await Promise.all(SITE.postcards.map(async (p) => ({ ...p, ...(await size(p.photo)) })));
+const loveCls = ['topic', 'method', 'method', 'tools', 'tools', 'strengths', 'strengths', 'strengths', 'topic'];
+const linkedinLabel = SITE.linkedin.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+const fileName = (f: string) => f.split('/').pop()!;
+---
+<Base title="Contact & About" description={`Contact ${SITE.name} about research, roles and collaborations, and a little about life off the clock.`} active="contact">
+  <main id="main" class="light">
+    <div class="wrap page">
+      <section id="contact" aria-labelledby="contact-h" style="display:flex;flex-direction:column;gap:20px;scroll-margin-top:84px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <p class="mono" style="margin:0;color:#5b6070">{SITE.contact.eyebrow}</p>
+          <h1 id="contact-h" class="display">{SITE.contact.heading}</h1>
+          <p class="lede">{SITE.contact.lede}</p>
+        </div>
+        <div class="contact-grid">
+          <div class="glass cinfo">
+            <p class="display" style="margin:0;font-size:28px;line-height:1.15">{SITE.name}</p>
+            <div class="cline"><span class="mono">Email</span><a href={`mailto:${SITE.email}`}>{SITE.email}</a></div>
+            <div class="cline"><span class="mono">LinkedIn</span><a href={SITE.linkedin} target="_blank" rel="noopener noreferrer">{linkedinLabel}<span class="sr"> (opens in a new tab)</span></a></div>
+            <div class="cvs">
+              <span class="mono" style="color:#5b6070">Download</span>
+              {SITE.cv.map((c) => (
+                <a class="cv" href={url(c.file)} download={fileName(c.file)}><span>{c.label}</span><span class="mono">PDF ↓</span></a>
+              ))}
+            </div>
+          </div>
+          <form class="glass cform" aria-label="Contact form" data-contact data-email={SITE.email}>
+            <div class="field"><label class="mono" for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required /></div>
+            <div class="field"><label class="mono" for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="field"><label class="mono" for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <p class="form-note">{SITE.contact.form_note}</p>
+              <button type="submit" class="btn btn-ink">Send message →</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div id="about-me" style="display:flex;flex-direction:column;gap:16px;scroll-margin-top:84px">
+        <p class="mono" style="margin:0;color:#5b6070">{SITE.about.eyebrow}</p>
+        <h2 class="display" style="margin:0;font-size:clamp(38px,4.2vw,60px);line-height:1.04">{SITE.about.heading}</h2>
+        <p class="lede">{SITE.about.lede}</p>
+      </div>
+      <div class="photos">
+        {cards.map((pc) => (
+          <button type="button" class="postcard" aria-pressed="false" data-postcard aria-label={`${pc.alt}. Select to flip the postcard.`} data-cap={pc.caption} data-alt={pc.alt} data-date={pc.postmark}>
+            <span class="pc-inner">
+              <span class="pc-face pc-front">
+                <img src={url(pc.photo)} alt={pc.alt} width={pc.width} height={pc.height} loading="lazy" decoding="async" style={`object-position:${pc.focal_point}`} />
+                <span class="pc-hint pixel" aria-hidden="true">Flip ↻</span>
+              </span>
+              <span class="pc-face pc-back" aria-hidden="true">
+                <span class="pc-msg">{pc.caption}</span>
+                <span class="pc-side">
+                  <span class="pc-stamp"><span class="pixel">MR</span></span>
+                  <span class="pc-mark pixel">{pc.postmark}</span>
+                  <span class="pc-line"></span><span class="pc-line"></span><span class="pc-line"></span>
+                </span>
+              </span>
+            </span>
+          </button>
+        ))}
+      </div>
+      <div class="about-grid">
+        <section class="glass sec" aria-labelledby="ab-1">
+          <h3 class="k mono" id="ab-1" style="margin:0"><i aria-hidden="true"></i>Things I love to do</h3>
+          <ul class="chips" style="margin:0;padding:0;list-style:none">
+            {SITE.loves.map((l, i) => <li class={`tag cat-${loveCls[i % loveCls.length]} big`}>{l}</li>)}
+          </ul>
+        </section>
+        <section class="glass sec" aria-labelledby="ab-2">
+          <h3 class="k mono" id="ab-2" style="margin:0"><i aria-hidden="true"></i>Bucket list</h3>
+          <ul class="blist">
+            {SITE.bucket.map((b) => b.done ? <li class="done"><span class="sr">Done: </span>{b.text}</li> : <li>{b.text}</li>)}
+          </ul>
+        </section>
+        <section class="glass sec" aria-labelledby="ab-3">
+          <h3 class="k mono" id="ab-3" style="margin:0"><i aria-hidden="true"></i>Recent favorites</h3>
+          {SITE.favorites.map((f) => <div class="fav"><span class="mono">{f.label}</span><span class="display">{f.value}</span></div>)}
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    import { initAbout } from '../scripts/about';
+    initAbout();
+  </script>
+</Base>

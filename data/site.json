@@ -1,0 +1,3052 @@
+{
+ "themes": [
+  {
+   "name": "Behavioral & mental health",
+   "cat": "Topic",
+   "desc": "Behavioral health, ABA, digital mental health, crisis response and suicide prevention"
+  },
+  {
+   "name": "Health equity & SDOH",
+   "cat": "Topic",
+   "desc": "Health equity, social determinants of health and public health"
+  },
+  {
+   "name": "Assistive tech & AAC",
+   "cat": "Topic",
+   "desc": "Assistive technology and augmentative & alternative communication (AAC) devices"
+  },
+  {
+   "name": "Disability, neurodiversity & inclusion",
+   "cat": "Topic",
+   "desc": "Disability, neurodiverse care and inclusive design"
+  },
+  {
+   "name": "Youth & development",
+   "cat": "Topic",
+   "desc": "Youth wellbeing, child and adolescent development, child welfare"
+  },
+  {
+   "name": "Online safety & misinformation",
+   "cat": "Topic",
+   "desc": "Youth social-media harms, hate speech, disinformation"
+  },
+  {
+   "name": "Responsible AI & policy",
+   "cat": "Topic",
+   "desc": "Algorithmic accountability, ethics in technology, privacy, compliance and tech policy"
+  },
+  {
+   "name": "Applied AI",
+   "cat": "Topic",
+   "desc": "Building with and evaluating AI and machine learning"
+  },
+  {
+   "name": "Healthcare technology",
+   "cat": "Topic",
+   "desc": "Clinical software, EMR/SaaS products, clinical documentation and health data infrastructure"
+  },
+  {
+   "name": "Global & cross-cultural work",
+   "cat": "Topic",
+   "desc": "Global development, food security, immigration, culture and identity"
+  },
+  {
+   "name": "Psychology & cognition",
+   "cat": "Topic",
+   "desc": "Cognitive, social, personality and developmental psychology"
+  },
+  {
+   "name": "Qualitative methods",
+   "cat": "Method",
+   "desc": "Interviews, focus groups, ethnography, contextual inquiry, observation, thematic coding"
+  },
+  {
+   "name": "Quantitative methods & modeling",
+   "cat": "Method",
+   "desc": "Statistics, regression and predictive modeling, experimental design, surveys"
+  },
+  {
+   "name": "Research design, writing & ethics",
+   "cat": "Method",
+   "desc": "Literature review, research critique, IRB and research ethics, academic writing"
+  },
+  {
+   "name": "Human factors & usability",
+   "cat": "Method",
+   "desc": "Human factors, task analysis, usability, accessibility, pilot and acceptance testing"
+  },
+  {
+   "name": "UX & interaction design",
+   "cat": "Method",
+   "desc": "UI design, prototyping, personas, information architecture, design specs (Figma)"
+  },
+  {
+   "name": "Product management",
+   "cat": "Method",
+   "desc": "Requirements, user stories, roadmaps, backlog triage, QA, competitive analysis"
+  },
+  {
+   "name": "Data science & visualization",
+   "cat": "Method",
+   "desc": "Data cleaning and integration, dashboards, Tableau, Excel"
+  },
+  {
+   "name": "Programming (Python, R, SQL)",
+   "cat": "Tools & skills",
+   "desc": "Python, R and SQL"
+  },
+  {
+   "name": "Web & AI prototyping",
+   "cat": "Tools & skills",
+   "desc": "React, HTML and AI-assisted building (Claude Code)"
+  },
+  {
+   "name": "Bilingual Spanish–English",
+   "cat": "Tools & skills",
+   "desc": "Professional working proficiency in Spanish"
+  },
+  {
+   "name": "Ethics & critical thinking",
+   "cat": "Strengths",
+   "desc": "Ethical judgment and critical analysis"
+  },
+  {
+   "name": "Advocacy & empathy",
+   "cat": "Strengths",
+   "desc": "Advocacy, empathy and cultural humility"
+  },
+  {
+   "name": "Systems thinking",
+   "cat": "Strengths",
+   "desc": "Systems thinking, prioritization and attention to detail"
+  },
+  {
+   "name": "Collaboration & leadership",
+   "cat": "Strengths",
+   "desc": "Collaboration, leadership, facilitation and teaching"
+  },
+  {
+   "name": "Communication",
+   "cat": "Strengths",
+   "desc": "Stakeholder, plain-language and technical communication"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "S1",
+   "rank": 1,
+   "tier": "Featured",
+   "title": "Predictive Analytics: Social Determinants of Health & Suicide Outcomes",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Built count-regression models on public CDC and Census data to show how poverty, race, sex, age and disability interact in suicide deaths across 10 Southeastern states.",
+   "org": "DH 5160 Analytics and AI for Health Strategies, Iowa State University",
+   "role": "Graduate Researcher",
+   "dates": "Fall 2025",
+   "metrics": "10 states; 3 public datasets; IRR 1.121 (p < .001); ΔAIC ≈ −103,000",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "How do socioeconomic and demographic factors (poverty, race, sex, age group, disability) interact to influence suicide deaths across 10 Southeastern U.S. states?"
+    },
+    {
+     "k": "Methods",
+     "b": "Merged and cleaned three public datasets (CDC WONDER mortality, CDC Disability and Health Data System, Census SAIPE poverty) by state and year in Python (pandas) and R (tidyverse). Began with OLS regression (R² = 0.679) and diagnosed severe multicollinearity; moved to Poisson, found overdispersion (deviance/df = 2.62), and fit a negative binomial model (MASS glm.nb) with a population offset and three interaction terms. Designed a Tableau dashboard (choropleth, scatter, bar) for state public-health officials. Ran in parallel with an ethnographic study (S6), whose findings added the poverty dataset."
+    },
+    {
+     "k": "Findings",
+     "b": "The interaction model improved fit by about 103,000 AIC points over the main-effects model. Age × sex and race × poverty interactions were highly significant (p < .001): for White residents, each 1 SD rise in state poverty was associated with a 12.1% higher suicide death rate (IRR = 1.121). Disability × poverty was not significant (IRR = 0.9998)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "SDOH & suicide prediction"
+  },
+  {
+   "id": "S6",
+   "rank": 2,
+   "tier": "Featured",
+   "title": "Ethnography of Crisis Response: Barriers to Mental Healthcare in the Southeast",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Observed and coded an expert panel on the 988 Suicide & Crisis Lifeline to uncover the barriers to care that statistics miss.",
+   "org": "HCI 5260 Design Ethnography, Iowa State University",
+   "role": "Graduate Researcher",
+   "dates": "Fall 2025",
+   "metrics": "9 panelists observed; 9 codes; 5 new predictor variables",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "What human, cultural and logistical factors affect access to mental healthcare in the Southeastern U.S., and how can communities be supported to prevent suicide?"
+    },
+    {
+     "k": "Methods",
+     "b": "Contextual inquiry: passive observation of a nine-member SAMHSA expert panel (federal and state officials, first responders, peer specialists) on the 988 Lifeline. Took fieldnotes, built a codebook (including an observer-positionality code for reflexivity) and coded inductively by theme, then compared findings with the parallel quantitative model (S1)."
+    },
+    {
+     "k": "Findings",
+     "b": "Most frequent codes: continuum of care (17), new predictor variables (14), at-risk communities (13), systemic barriers (12). Surfaced predictors missing from the model (language isolation, LGBTQIA status, veteran status, farming-related economic instability, fear of police response) and turned them into design requirements for a public-health dashboard: co-responder mapping, continuum-of-care metrics and mobile service areas."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "988 crisis ethnography"
+  },
+  {
+   "id": "S4",
+   "rank": 3,
+   "tier": "Featured",
+   "title": "Emotive Integration Capability (EIC) for AAC Devices",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Co-authored a research proposal to give AAC users tone and emotion in synthesized speech, using a hybrid neural/statistical speech model and a full evaluation plan.",
+   "org": "IE 5770 Human Factors, Iowa State University",
+   "role": "Co-Author & Graduate Researcher",
+   "dates": "Fall 2024",
+   "metrics": "7 fundamental emotions; 14 intermediate tones; 20 advanced (14 tones + 6 nuances such as sarcasm and humor); 42-rater listener study design; 30+ user pre/post study design",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "AAC devices speak in a flat, monotone voice, so millions of users cannot express emotion, tone or nuance. How can speech-generating devices add emotive prosody, and would that improve users' autonomy, social engagement and behavior?"
+    },
+    {
+     "k": "Methods",
+     "b": "Reviewed literature on AAC outcomes, Functional Communication Training and speech synthesis (unit selection, statistical parametric synthesis, deep neural networks), and selected a hybrid DNN–SPSS framework (Prosody-TTS) for its low data needs. Designed tiered emotion libraries (Fundamental, Intermediate, Advanced; based on Plutchik), a TOME-method use case, a hierarchical task analysis and a UI mockup. Specified data needs (about 56, 112 and 160 hours of transcribed audio per tier), a two-coder agreement protocol for labeling training audio, a listener experiment powered with G*Power (42 ratings per clip; chi-square goodness-of-fit and binomial tests), and a pre/post quasi-experiment with 30+ AAC users rated by two or more clinicians across four domains and analyzed with paired t-tests, plus caregiver and user feedback surveys."
+    },
+    {
+     "k": "Findings",
+     "b": "A complete research proposal for the Emotive Integration Capability, with its constraints stated (no standard taxonomy for secondary emotions, English-only scope, no individual voice timbre) and an integration path through an open-source AAC platform."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Assistive tech & AAC",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Psychology & cognition",
+     "cat": "Topic"
+    },
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [
+    {
+     "src": "/assets/img/projects/eic-figure-1.png",
+     "cap": "Figure 1. Libraries of emotive tones for AAC: Fundamental, Intermediate and Advanced tiers, with a nuance set (sarcasm, humor, uncertainty and more).",
+     "fit": "contain"
+    }
+   ],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "Emotive AAC (EIC)"
+  },
+  {
+   "id": "S2",
+   "rank": 4,
+   "tier": "Featured",
+   "title": "Digital Defender: Gamified Youth Online Safety",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Researched youth social media harms and prototyped a space-themed game that teaches teens to spot hate speech and misinformation.",
+   "org": "YTH 5700P Contemporary Youth Issues & HCI 5840 Python Application Development, Iowa State University",
+   "role": "Graduate Researcher (Group 4)",
+   "dates": "Summer 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "How does algorithmic amplification expose adolescents to disinformation, cyberbullying and hate speech, and how can they learn to recognize online manipulation?"
+    },
+    {
+     "k": "Methods",
+     "b": "Investigated developmental harms of youth social media use; designed and prototyped a gamified educational app in Python, with Figma wireframes and prototypes (missions such as Melt Hate Speech, Mix Up Misinformation and Send Bullies to Saturn; Learn the Lingo term cards; quizzes and points)."
+    },
+    {
+     "k": "Findings",
+     "b": "A working prototype that trains adolescents to identify online manipulation and harmful propaganda."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "Online safety & misinformation",
+     "cat": "Topic"
+    },
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "Digital Defender"
+  },
+  {
+   "id": "S8",
+   "rank": 5,
+   "tier": "Featured",
+   "title": "Product Evaluation: nH Predict (Algorithmic Accountability in Healthcare)",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Critical evaluation of an insurer's machine-learning tool for post-acute care decisions, and how its use should be redesigned.",
+   "org": "HCI 5300X Perspectives in HCI, Iowa State University",
+   "role": "Graduate student",
+   "dates": "Spring 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "What happens when a predictive algorithm drives post-acute care and claims decisions, and how should its design and governance change?"
+    },
+    {
+     "k": "Methods",
+     "b": "Analyzed nH Predict through techno-centric, human-centric and collective-intelligence perspectives at micro, meso and macro levels, drawing on investigative reporting, litigation and company claims."
+    },
+    {
+     "k": "Findings",
+     "b": "Recommended explainable AI, a protected clinician-override workflow, multidisciplinary review of AI recommendations, clinician training, and regulatory transparency and monitoring requirements."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "nH Predict audit"
+  },
+  {
+   "id": "S7",
+   "rank": 6,
+   "tier": "Featured",
+   "title": "How Behavior Technicians Use ABA Data Collection Apps (Interview Study)",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Interviewed behavior technicians and a BCBA about how data-collection apps fit into real therapy sessions.",
+   "org": "HCI 5230X Qualitative Research Methods in HCI, Iowa State University",
+   "role": "Graduate Researcher",
+   "dates": "Spring 2025",
+   "metrics": "6 interviews; 9 coded subcategories",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "How do behavior technicians and analysts experience and integrate data collection apps during ABA sessions, and what would make these tools better?"
+    },
+    {
+     "k": "Methods",
+     "b": "Literature review on data collection integrity in ABA; scoped research plan and interview guide; six semi-structured interviews (5 RBTs, 1 BCBA; Teams and in person, 30–45 min, recorded with consent); transcribed, coded inductively and organized into a codebook of categories and subcategories, with reflexivity notes on insider bias."
+    },
+    {
+     "k": "Findings",
+     "b": "Most technicians use a hybrid of paper and app. Key barriers: clients reacting to devices, battery and offline failures, no undo, hard-to-find notes. Experienced technicians want visibility into progress trends and the treatment plan. Recommended free-text notes, offline mode, company devices, and BT–BCBA change logs and progress visualizations."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Healthcare technology",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "ABA data-app interviews"
+  },
+  {
+   "id": "W1",
+   "rank": 7,
+   "tier": "Featured",
+   "title": "Product Owner, healthcare EMR software",
+   "setting": "Work",
+   "type": "Role",
+   "summary": "Leads product strategy and requirements for healthcare EMR software.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner; interim Product Designer",
+   "dates": "Feb 2025 – present",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "A growing EMR platform needed clear priorities and requirements that balance user needs, compliance and business goals."
+    },
+    {
+     "k": "Process",
+     "b": "Stakeholder discovery, user surveys, competitive analysis, requirements writing, backlog prioritization, pilot testing and AI-assisted prototyping. Interim Product Designer: wireframes, interaction maps and design specs."
+    },
+    {
+     "k": "Result",
+     "b": "Steady, well-documented releases, and the product case studies in this portfolio."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Web & AI prototyping",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Roles",
+   "short": "EMR product owner"
+  },
+  {
+   "id": "P10",
+   "rank": 8,
+   "tier": "Featured",
+   "title": "AI-assisted product owner workspace",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "A private, read-only local app that brings a product owner's daily review into one view.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Daily status review meant checking several tools by hand."
+    },
+    {
+     "k": "Process",
+     "b": "Spec and decisions log; privacy-first design (read-only access, encrypted credentials, outside text treated as data); unit, accessibility, keyboard and performance testing."
+    },
+    {
+     "k": "Result",
+     "b": "A working, documented local tool."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Web & AI prototyping",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "AI PO workspace"
+  },
+  {
+   "id": "W3",
+   "rank": 9,
+   "tier": "Featured",
+   "title": "Behavior Therapist (RBT) / Clinical Data Specialist",
+   "setting": "Work",
+   "type": "Role",
+   "summary": "Taught nonvocal children with autism to communicate with AAC devices, and tracked outcomes with longitudinal behavioral data.",
+   "org": "Marcus Autism Center & other ABA providers",
+   "role": "Registered Behavior Technician; Clinical Data Specialist",
+   "dates": "2022 – 2024",
+   "metrics": "0–5 words to fluent sentences; 83% reduction in challenging behaviors",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Nonvocal children with autism needed functional, independent communication, and challenging behaviors needed data-driven intervention."
+    },
+    {
+     "k": "Process",
+     "b": "Taught communication with speech-generating devices, AAC systems, PECS and adaptive switches; collected and analyzed high-frequency longitudinal behavioral data under clinical standards; delivered in-home therapy in Spanish and English for underserved families."
+    },
+    {
+     "k": "Result",
+     "b": "Clients went from 0–5 vocal words to fluent sentence communication; 83% reduction in challenging behaviors across a multi-client caseload."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Assistive tech & AAC",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Bilingual Spanish–English",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Roles",
+   "short": "Marcus Autism Center"
+  },
+  {
+   "id": "S5",
+   "rank": 10,
+   "tier": "Featured",
+   "title": "Pantry Partner: Cross-Cultural Food Security Platform (UN SDG 2)",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "A values-driven, co-designed app that helps people in Iowa and Windhoek, Namibia find nearby food resources with dignity, and helps pantries manage inventory.",
+   "org": "HCI 5300X Perspectives in HCI, Iowa State University & Namibia University of Science and Technology",
+   "role": "Graduate Design Researcher (Group 4)",
+   "dates": "Spring 2025",
+   "metrics": "2 personas; 4 value levels with usage metrics; 21-slide pitch",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "Accessing free food (pantries, community meals) is hard because information is fragmented, outdated or inaccessible, and existing tools put institutional needs ahead of the dignity and trust of the people they serve. How can a location-based tool provide food resources while prioritizing dignity and accessibility?"
+    },
+    {
+     "k": "Methods",
+     "b": "With an international team (Iowa State and Namibia University of Science and Technology): a values workshop mapped to UN SDGs and a team vote; user interviews plus food-insecurity and volunteer surveys; competitive analysis; personas (a new mother in Windhoek; a recently laid-off user with cerebral palsy); a values table with metrics at micro, meso and macro levels; information architecture and a prioritized roadmap; a Figma prototype; and feedback sessions, including a senior product designer."
+    },
+    {
+     "k": "Findings",
+     "b": "A working Figma prototype with delivery requests for users facing disability or transport barriers, community groups, real-time notifications, and inventory scanning for pantry partners. Feedback praised donation scanning and volunteer tracking and suggested expiry alerts and earlier login. The retrospective named next steps: more iterations, full usability testing, more accessibility features, and checks on data freshness and translation accuracy."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [
+    {
+     "src": "/assets/img/projects/pantry-partner-cover.webp",
+     "cap": "Pantry Partner: connecting people experiencing food insecurity with communal food resources.",
+     "fit": "cover"
+    },
+    {
+     "src": "/assets/img/projects/pantry-partner-screens.webp",
+     "cap": "Prototype screens: home feed, pantry map and partner inventory.",
+     "fit": "contain"
+    },
+    {
+     "src": "/assets/img/projects/pantry-partner-features-1.webp",
+     "cap": "Key features for people seeking food: delivery requests, community groups, timely notifications.",
+     "fit": "contain"
+    },
+    {
+     "src": "/assets/img/projects/pantry-partner-features-2.webp",
+     "cap": "Key features for pantry partners: inventory scanning and outreach to the community.",
+     "fit": "contain"
+    },
+    {
+     "src": "/assets/img/projects/pantry-partner-values.webp",
+     "cap": "Values table: what each value means and how it is measured at the micro, meso and macro levels.",
+     "fit": "contain"
+    }
+   ],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "Pantry Partner"
+  },
+  {
+   "id": "P16",
+   "rank": 11,
+   "tier": "Core",
+   "title": "Data visualization and graphing",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Led requirements for the platform's data visualization and graphing features.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Users needed clear, standards-based charts to track progress and make decisions from their data."
+    },
+    {
+     "k": "Process",
+     "b": "Requirements synthesis from stakeholder sessions, research into visualization best practices, competitive benchmarking, design review and acceptance criteria."
+    },
+    {
+     "k": "Result",
+     "b": "A prioritized graphing roadmap and specs for core and advanced chart features."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Data visualization"
+  },
+  {
+   "id": "S3",
+   "rank": 12,
+   "tier": "Core",
+   "title": "Public Health Data Visualization & Policy Dissemination",
+   "setting": "School",
+   "type": "Research project",
+   "summary": "Analyzed public health datasets in R and Python and turned the findings into accessible visual narratives.",
+   "org": "Iowa State University",
+   "role": "Graduate Researcher",
+   "dates": "",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "How can complex public health data be made clear enough to explain health disparities and support evidence-based policy?"
+    },
+    {
+     "k": "Methods",
+     "b": "Analyzed and visualized complex public health datasets in R and Python."
+    },
+    {
+     "k": "Findings",
+     "b": "Accessible visual narratives that demystify health disparities and support evidence-based public policy."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "Public health data viz"
+  },
+  {
+   "id": "E1",
+   "rank": 13,
+   "tier": "Core",
+   "title": "Master of Human-Computer Interaction",
+   "setting": "School",
+   "type": "Degree",
+   "summary": "Distance MHCI at Iowa State University, focused on assistive tech, digital mental health, SDOH analytics, youth and social media, and AI in healthcare.",
+   "org": "Iowa State University",
+   "role": "Graduate student",
+   "dates": "Summer 2024 – Dec 2025",
+   "metrics": "GPA 4.00",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Focus: assistive language technology; access to digital mental health and crisis-response resources; predictive analytics and SDOH; youth development and social media; decision-making AI in healthcare."
+    },
+    {
+     "k": "Practiced",
+     "b": "Coursework: Analytics and AI for Health; Python Application Development; Computational Implementation; Human Factors Engineering; Design and Ethics; Design Ethnography; Qualitative Research Methods; Contemporary Youth Issues; Perspectives in HCI; Visual Design of HCI."
+    },
+    {
+     "k": "Outcome",
+     "b": "Degree conferred December 2025."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Degrees & credentials",
+   "short": "MHCI degree"
+  },
+  {
+   "id": "P1",
+   "rank": 14,
+   "tier": "Core",
+   "title": "Structured document export",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Defined and sequenced a document export feature from discovery to MVP.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Users assembled required documents outside the product from scattered sources."
+    },
+    {
+     "k": "Process",
+     "b": "Stakeholder discovery, requirements and spec writing, data source mapping, dependency mapping and MVP scoping."
+    },
+    {
+     "k": "Result",
+     "b": "A shared roadmap and an MVP that shipped."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Web & AI prototyping",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Document export"
+  },
+  {
+   "id": "S9",
+   "rank": 15,
+   "tier": "Core",
+   "title": "Pioneers of Assistive Communication Technologies",
+   "setting": "School",
+   "type": "Writing / case study",
+   "summary": "A case study of PRC-Saltillo's assistive communication devices and how user-centered design gives nonvocal people a voice.",
+   "org": "[Which course?]",
+   "role": "Author",
+   "dates": "[Date]",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "How have assistive communication technologies evolved, and what makes their design user-centered?"
+    },
+    {
+     "k": "Methods",
+     "b": "Traced PRC-Saltillo's history from a 1966 repurposed-teletype device through portable, head-pointer and touch-screen devices to the LAMP and Unity language systems; evaluated their design against four user-centered design elements (visibility, accessibility, legibility, language), drawing on company history, user testimonials and inclusive-design literature, and on my own experience teaching children to use speech-generating devices."
+    },
+    {
+     "k": "Findings",
+     "b": "Concluded that PRC-Saltillo sets a standard for user-centered assistive design, and posed open questions for the next generation of AAC: expressing tone and nuance, moving beyond wants and demands, and learning vocabulary as curiosity leads."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Assistive tech & AAC",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "Pioneers of AAC essay"
+  },
+  {
+   "id": "P3",
+   "rank": 16,
+   "tier": "Core",
+   "title": "Data validity and visibility",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Made record validity visible at a glance and closed validation gaps.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Users could not easily tell whether their records were complete and valid."
+    },
+    {
+     "k": "Process",
+     "b": "Design specs translated into user stories with acceptance criteria, defect scoping and staged release communications."
+    },
+    {
+     "k": "Result",
+     "b": "Clearer status at a glance, with validation gaps tracked to closure."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Data validity"
+  },
+  {
+   "id": "W2",
+   "rank": 17,
+   "tier": "Core",
+   "title": "Strategy & Operations Analyst, Applied ABC",
+   "setting": "Work",
+   "type": "Role",
+   "summary": "Built the data infrastructure and workflows behind clinical school consultation teams.",
+   "org": "Applied ABC",
+   "role": "Strategy & Operations Analyst; Case Manager",
+   "dates": "May 2024 – Feb 2025",
+   "metrics": "11 new institutional partnerships",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Clinical school consultation teams lacked a unified source of client data, and operational bottlenecks slowed case resolution and family access to services."
+    },
+    {
+     "k": "Process",
+     "b": "Designed and implemented a centralized client management database with automated task workflows; ran structured user interviews and UAT to turn stakeholder needs into engineering requirements; built research-informed outreach strategies. As Case Manager (May – Jun 2024), restructured cross-departmental case resolution pipelines."
+    },
+    {
+     "k": "Result",
+     "b": "11 new institutional partnerships, evaluated through quarterly reviews; faster case resolution and better family access to behavioral services."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Healthcare technology",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Roles",
+   "short": "Strategy & ops analyst"
+  },
+  {
+   "id": "S10",
+   "rank": 18,
+   "tier": "Core",
+   "title": "NHANES Data Wrangling & Exploratory Analysis: Sedentary Time and BMI",
+   "setting": "School",
+   "type": "Analysis exercise",
+   "summary": "Pulled CDC NHANES 2017–18 survey data into Python, merged and cleaned it, engineered new variables, and explored how sedentary time relates to BMI.",
+   "org": "DH 5160 Analytics and AI for Health Strategies, Iowa State University",
+   "role": "Student",
+   "dates": "Fall 2025",
+   "metrics": "3 CDC datasets merged; 4 engineered variables; mean sedentary time 358 min/day",
+   "secs": [
+    {
+     "k": "Question",
+     "b": "How does daily sedentary time relate to body mass index among U.S. survey participants?"
+    },
+    {
+     "k": "Methods",
+     "b": "Downloaded three NHANES 2017–18 files from the CDC (demographics, physical activity, body measures) and loaded the SAS transport files with pandas; merged on participant ID; selected and renamed variables, checked missingness and dropped incomplete records; recoded gender; engineered age groups, a four-level sedentary-time variable (from PAD680), activity levels and CDC BMI categories with pd.cut; computed grouped means and NumPy summary statistics; and visualized distributions with Matplotlib and Seaborn box plots and histograms."
+    },
+    {
+     "k": "Findings",
+     "b": "Mean sedentary time was 358 minutes a day (median 300). Box plots showed median BMI rising slightly from the low to the very-high sedentary group, suggesting a positive association between sedentary time and BMI (descriptive only, not tested statistically)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [
+    {
+     "src": "/assets/img/projects/nhanes-bmi-by-sedentary-level.png",
+     "cap": "BMI distribution by daily sedentary level, NHANES 2017–18 (descriptive).",
+     "fit": "contain"
+    }
+   ],
+   "group": "School",
+   "sub": "Research & projects",
+   "short": "NHANES analysis"
+  },
+  {
+   "id": "V1",
+   "rank": 19,
+   "tier": "Core",
+   "title": "Court-Appointed Special Advocate (CASA)",
+   "setting": "Volunteer",
+   "type": "Service",
+   "summary": "Advocates in court for siblings in foster care.",
+   "org": "Fulton County CASA",
+   "role": "Court-Appointed Special Advocate",
+   "dates": "[start] – present",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Need",
+     "b": "Children in foster care need a consistent advocate who represents their best interests in court."
+    },
+    {
+     "k": "Contribution",
+     "b": "Home visits, communication across the people involved in the case, court documentation, and evidence-based care recommendations."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Volunteer",
+   "sub": "Service & advocacy",
+   "short": "CASA advocate"
+  },
+  {
+   "id": "V2",
+   "rank": 20,
+   "tier": "Core",
+   "title": "Assistive Play Therapy Volunteer, Lekotek",
+   "setting": "Volunteer",
+   "type": "Service",
+   "summary": "Facilitated adapted learning technology and inclusive play for children with disabilities.",
+   "org": "Lekotek",
+   "role": "Assistive Play Therapy Volunteer",
+   "dates": "",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Need",
+     "b": "Children with disabilities need inclusive play and learning that is adapted to how they engage."
+    },
+    {
+     "k": "Contribution",
+     "b": "Facilitated adapted learning technology sessions and inclusive play therapy."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Assistive tech & AAC",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Volunteer",
+   "sub": "Service & advocacy",
+   "short": "Lekotek play therapy"
+  },
+  {
+   "id": "V3",
+   "rank": 21,
+   "tier": "Core",
+   "title": "Bilingual Logistics & Asylum Coordinator, Team Libertad",
+   "setting": "Volunteer",
+   "type": "Service",
+   "summary": "Translated and coordinated travel for asylum-seekers navigating U.S. immigration.",
+   "org": "Team Libertad",
+   "role": "Bilingual Logistics & Asylum Coordinator",
+   "dates": "",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Need",
+     "b": "Asylum-seekers navigating U.S. immigration processes face language barriers and complex travel logistics."
+    },
+    {
+     "k": "Contribution",
+     "b": "Provided Spanish–English translation and coordinated travel logistics."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Bilingual Spanish–English",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Volunteer",
+   "sub": "Service & advocacy",
+   "short": "Team Libertad"
+  },
+  {
+   "id": "C2",
+   "rank": 22,
+   "tier": "Core",
+   "title": "HCI 5260 Design Ethnography",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Hands-on graduate course in ethnographic methods for design and HCI (cross-listed with Anthropology).",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Fall 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: ethnographic methods applied to design, HCI and user research."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: using ethnography to conceptualize, design, build and evaluate interactive systems."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: ethnography of crisis response and barriers to care (S6)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Design Ethnography"
+  },
+  {
+   "id": "C1",
+   "rank": 23,
+   "tier": "Core",
+   "title": "HCI 5230X Qualitative Research Methods in HCI",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate course in qualitative methods for HCI and UX research.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Spring 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: qualitative research methods specific to HCI and UX research, from academic and industry perspectives."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: conducting, writing up and critiquing qualitative research, using focus groups, interviews and surveys."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: interview study on ABA data collection apps (S7)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Qualitative methods",
+     "cat": "Method"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Qualitative Methods"
+  },
+  {
+   "id": "C10",
+   "rank": 24,
+   "tier": "Core",
+   "title": "DH 5160 Analytics and AI for Health Strategies",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate digital health course on data analytics, machine learning and AI for health data.",
+   "org": "Iowa State University (Digital Health)",
+   "role": "Student",
+   "dates": "Fall 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: data analytics in health systems, data mining and visualization, and predictive modeling of health outcomes."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: SQL, Power BI or Tableau, R or Python, machine learning and AI applied to health data."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: the SDOH suicide-outcomes model (S1), plus SQL, Python, R and Tableau mini-projects."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Applied AI",
+     "cat": "Topic"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Analytics & AI for Health"
+  },
+  {
+   "id": "C9",
+   "rank": 25,
+   "tier": "Core",
+   "title": "YTH 5700P Contemporary Youth Issues: Youth, Families & Technology",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate course on how technology shapes young people and families.",
+   "org": "Iowa State University",
+   "role": "Student",
+   "dates": "Summer 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: technology's intersection with youth and families: identity formation, privacy, race, class, gender, subcultures, risky behavior, policing, education, globalization, health and policy."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: developing practical strategies to support youth and families in a technology-heavy society."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: research behind the Digital Defender game (S2)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "Online safety & misinformation",
+     "cat": "Topic"
+    },
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Youth, Families & Tech"
+  },
+  {
+   "id": "C8",
+   "rank": 26,
+   "tier": "Core",
+   "title": "IE 5770 Human Factors",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate engineering course on physical and psychological factors in human performance.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Fall 2024",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: physical and psychological factors affecting human performance in systems."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: human factors analysis and research proposal writing."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: the Emotive Integration Capability (EIC) proposal for AAC (S4)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Assistive tech & AAC",
+     "cat": "Topic"
+    },
+    {
+     "name": "Psychology & cognition",
+     "cat": "Topic"
+    },
+    {
+     "name": "Human factors & usability",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Human Factors"
+  },
+  {
+   "id": "C6",
+   "rank": 27,
+   "tier": "Core",
+   "title": "HCI 5890 Design and Ethics",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate course on ethics and decision-making in technology and design.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Fall 2024",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: ethics and decision-making as they relate to technology, design, design research, HCI and the design industry."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: ethical analysis of design decisions."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Design & Ethics"
+  },
+  {
+   "id": "C3",
+   "rank": 28,
+   "tier": "Core",
+   "title": "HCI 5300X Perspectives in HCI",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate course on inclusive, humane design and technology's social impact.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Spring 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: inclusive and humane design; technology's intersection with race, gender, age and class; technology worldwide; democracy; social engineering and cybersecurity."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: critical analysis of technology's social impact; cross-cultural design work."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: Pantry Partner food security platform (S5) and nH Predict product evaluation (S8)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Perspectives in HCI"
+  },
+  {
+   "id": "E2",
+   "rank": 29,
+   "tier": "Core",
+   "title": "BA in Psychology, Minor in Spanish",
+   "setting": "School",
+   "type": "Degree",
+   "summary": "Psychology at Georgia State University, focused on developmental, maladaptive and intercultural psychology.",
+   "org": "Georgia State University",
+   "role": "Undergraduate student",
+   "dates": "2020 – May 2024",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Focus: developmental, maladaptive and intercultural psychology, and how lack of access to resources leads to gaps in mental and behavioral health outcomes."
+    },
+    {
+     "k": "Practiced",
+     "b": "Coursework: Honors Philosophy of Technology; Advanced Research Design & Data Analysis; Intro to Research Design & Analysis; Honors Psychopathology; Developmental Psychology; Psychology of the Atypical Child; Multicultural Issues in Psychology; Cognitive Psychology; Honors Scientific Perspectives on Global Problems."
+    },
+    {
+     "k": "Outcome",
+     "b": "Bachelor of Arts, May 2024; Dean's List."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Bilingual Spanish–English",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Degrees & credentials",
+   "short": "BA Psychology, Spanish"
+  },
+  {
+   "id": "P11",
+   "rank": 30,
+   "tier": "Supporting",
+   "title": "Customer request intake tool",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Designed an intake form that builds severity and impact into triage of customer requests.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Customer requests arrived inconsistently, without what was needed to prioritize them."
+    },
+    {
+     "k": "Process",
+     "b": "Workflow analysis, form and interaction design, and iterative revisions with stakeholders; prototyped in React."
+    },
+    {
+     "k": "Result",
+     "b": "A working intake prototype ready for integration."
+    }
+   ],
+   "tags": [
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Web & AI prototyping",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Customer intake tool"
+  },
+  {
+   "id": "P5",
+   "rank": 31,
+   "tier": "Supporting",
+   "title": "Configurable catalog redesign",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Took a settings catalog from read-only reference to a configurable tool.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Admins needed to configure a catalog safely without breaking downstream data."
+    },
+    {
+     "k": "Process",
+     "b": "Requirements from design mocks, business rules, user flows and test scenarios, delivered in two phases."
+    },
+    {
+     "k": "Result",
+     "b": "Phased requirements ready for development."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Catalog redesign"
+  },
+  {
+   "id": "P7",
+   "rank": 32,
+   "tier": "Supporting",
+   "title": "Customer report remediation",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Turned audit findings on a customer report into one fix plan.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Several defects in a customer-facing report needed a coordinated fix."
+    },
+    {
+     "k": "Process",
+     "b": "Defect consolidation, prioritization and iterative layout mockups."
+    },
+    {
+     "k": "Result",
+     "b": "One prioritized fix plan and an approved layout direction."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Collaboration & leadership",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Report remediation"
+  },
+  {
+   "id": "P9",
+   "rank": 33,
+   "tier": "Supporting",
+   "title": "Request triage and backlog grooming",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Triaged a crowded backlog into clear, prioritized stories.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Overlapping and undefined requests made the backlog hard to prioritize."
+    },
+    {
+     "k": "Process",
+     "b": "Backlog audit, duplicate analysis, story writing with acceptance criteria and a sequenced grooming plan."
+    },
+    {
+     "k": "Result",
+     "b": "A cleaner backlog and a prioritized plan."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Backlog triage"
+  },
+  {
+   "id": "P12",
+   "rank": 34,
+   "tier": "Supporting",
+   "title": "Release and stakeholder communications",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Plain-language release communications tailored to each audience.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Different audiences needed different information about the same changes."
+    },
+    {
+     "k": "Process",
+     "b": "Audience analysis and plain-language writing for announcements, notices and summaries."
+    },
+    {
+     "k": "Result",
+     "b": "Clear, accurate communications across releases."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Release comms"
+  },
+  {
+   "id": "P14",
+   "rank": 35,
+   "tier": "Supporting",
+   "title": "Platform documentation",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Turned product knowledge into clear, editable documentation.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "Teams lacked an accurate, shareable overview of the platform."
+    },
+    {
+     "k": "Process",
+     "b": "Information architecture, glossary, Q&A and gap analysis."
+    },
+    {
+     "k": "Result",
+     "b": "Editable documentation and a follow-up list."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Platform docs"
+  },
+  {
+   "id": "P15",
+   "rank": 36,
+   "tier": "Supporting",
+   "title": "Issue pattern tracking",
+   "setting": "Work",
+   "type": "Product initiative",
+   "summary": "Organized scattered reports into a tracker that surfaced a regression.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "User-reported issues were scattered and patterns were hard to see."
+    },
+    {
+     "k": "Process",
+     "b": "Data structuring and pattern analysis."
+    },
+    {
+     "k": "Result",
+     "b": "A tracker that identified a likely regression."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Issue tracking"
+  },
+  {
+   "id": "D3",
+   "rank": 37,
+   "tier": "Supporting",
+   "title": "Structured form section mockups",
+   "setting": "Work",
+   "type": "Design",
+   "summary": "Replaced a free-text workaround with structured fields.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "A single free-text field was being used as a workaround."
+    },
+    {
+     "k": "Process",
+     "b": "Mockups from the live interface, field constraints, acceptance criteria and QA scenarios."
+    },
+    {
+     "k": "Result",
+     "b": "A development-ready story with mockups."
+    }
+   ],
+   "tags": [
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Product management",
+     "cat": "Method"
+    },
+    {
+     "name": "Systems thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Form section mockups"
+  },
+  {
+   "id": "D7",
+   "rank": 38,
+   "tier": "Supporting",
+   "title": "Customer workaround guide",
+   "setting": "Work",
+   "type": "Design",
+   "summary": "A step-by-step guide and clarifying questions for a blocked customer workflow.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "A customer was blocked in a workflow."
+    },
+    {
+     "k": "Process",
+     "b": "Task analysis, an annotated step-by-step guide and clarifying questions."
+    },
+    {
+     "k": "Result",
+     "b": "A guide and a customer-ready follow-up."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Workaround guide"
+  },
+  {
+   "id": "D8",
+   "rank": 39,
+   "tier": "Supporting",
+   "title": "Scheduling tool",
+   "setting": "Work",
+   "type": "Design",
+   "summary": "Interface design for a scheduling tool.",
+   "org": "Healthcare EMR software",
+   "role": "Product Owner",
+   "dates": "2025 – 2026",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Problem",
+     "b": "[Describe the scheduling challenge, who it affected, and the constraints that shaped the brief.]"
+    },
+    {
+     "k": "Process",
+     "b": "[Outline your role, key decisions, and how research and iteration informed the design.]"
+    },
+    {
+     "k": "Result",
+     "b": "[Add the delivered solution and supporting evidence.]"
+    }
+   ],
+   "tags": [
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    }
+   ],
+   "media": [],
+   "group": "Work",
+   "sub": "Product, design & research case studies",
+   "short": "Scheduling tool"
+  },
+  {
+   "id": "C5",
+   "rank": 40,
+   "tier": "Supporting",
+   "title": "HCI 5840 Python Application Development in HCI",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate course building a large Python project from idea to demonstrable product.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Summer 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: the full development cycle: idea, specification, prototyping, implementation, testing and documentation."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: writing Python code and design documents for a project of the student's choosing."
+    },
+    {
+     "k": "Outcome",
+     "b": "Produced: the Digital Defender youth online safety game (S2)."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Online safety & misinformation",
+     "cat": "Topic"
+    },
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Python App Dev"
+  },
+  {
+   "id": "C4",
+   "rank": 41,
+   "tier": "Supporting",
+   "title": "HCI 5740 Computational Implementation and Prototyping in HCI",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate introduction to programming in Python for HCI.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Spring 2025",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: fundamentals of software programming and practical Python."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: interaction and interface design, information visualization and other computational HCI tools in Python."
+    }
+   ],
+   "tags": [
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    },
+    {
+     "name": "Data science & visualization",
+     "cat": "Method"
+    },
+    {
+     "name": "Programming (Python, R, SQL)",
+     "cat": "Tools & skills"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Prototyping in HCI"
+  },
+  {
+   "id": "C7",
+   "rank": 42,
+   "tier": "Supporting",
+   "title": "HCI 5950 Visual Design of HCI",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Graduate course in visual and interaction design for HCI.",
+   "org": "Iowa State University (MHCI)",
+   "role": "Student",
+   "dates": "Summer 2024",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: audience analysis, design methods for concepts and solutions, concept prototyping, and visual design fundamentals (color, type, symbolism, grid)."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: discussions, tutorials and hands-on design projects."
+    }
+   ],
+   "tags": [
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Visual Design of HCI"
+  },
+  {
+   "id": "C11",
+   "rank": 43,
+   "tier": "Supporting",
+   "title": "Research Design & Data Analysis sequence (PSYC 3510, 3530)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Two-course methods sequence in which I designed and ran my own psychology study.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2022 – 2023",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: research design, statistics and scientific communication in psychology."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: writing a formal research proposal, applying for IRB approval, experimental design, statistical analysis, independent data collection, and presenting results in APA style."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Quantitative methods & modeling",
+     "cat": "Method"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Research design & stats"
+  },
+  {
+   "id": "C13",
+   "rank": 44,
+   "tier": "Supporting",
+   "title": "PSYC 4400 Psychology of the Atypical Child",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Undergraduate course on children with cognitive, physical, learning or emotional difficulties.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "Spring 2023",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: problems of children with cognitive, physical, learning or emotional difficulties, with emphasis on diagnostic and corrective approaches."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: applying developmental and clinical frameworks to children's needs."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    },
+    {
+     "name": "Disability, neurodiversity & inclusion",
+     "cat": "Topic"
+    },
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Atypical Child"
+  },
+  {
+   "id": "C15",
+   "rank": 45,
+   "tier": "Supporting",
+   "title": "Philosophy & ethics of technology (PHIL 3000 Honors, PHIL 2030)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Honors philosophy of technology and introductory ethics.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2020 – 2021",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: how to define technology, whether it is morally or politically neutral, the ethics of innovation, and major ethical theories."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: philosophical argument and writing-intensive critique."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Philosophy & ethics"
+  },
+  {
+   "id": "C14",
+   "rank": 46,
+   "tier": "Supporting",
+   "title": "PSYC 3570 Multicultural Issues in Psychology",
+   "setting": "School",
+   "type": "Course",
+   "summary": "Undergraduate course on human diversity and cultural influences in psychology.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "Spring 2023",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: psychological topics and issues associated with diversity, from a range of theoretical and methodological perspectives that reflect cultural influences."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: analyzing diversity and culture in psychological research."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Multicultural Psychology"
+  },
+  {
+   "id": "C16",
+   "rank": 47,
+   "tier": "Supporting",
+   "title": "Clinical psychology coursework (Honors Psychopathology, Drugs & Behavior)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Coursework on psychological disorders, their treatment, and how drugs affect the brain and behavior.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2022",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: psychopathology and abnormal psychology; drugs, the nervous system and behavior."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: clinical and diagnostic reasoning."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Behavioral & mental health",
+     "cat": "Topic"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Clinical psychology"
+  },
+  {
+   "id": "C17",
+   "rank": 48,
+   "tier": "Supporting",
+   "title": "Developmental psychology coursework (Developmental Psychology, Human Development)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Coursework on physical, cognitive and social development across the lifespan.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2022 – 2023",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: human development from childhood through adulthood."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: applying developmental theory."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Youth & development",
+     "cat": "Topic"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Developmental psychology"
+  },
+  {
+   "id": "C19",
+   "rank": 49,
+   "tier": "Supporting",
+   "title": "Core psychology coursework (Cognitive, Social, Interpersonal, Personality)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Upper-level coursework on how people think, relate, influence one another and differ.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2023 – 2024",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: cognition and decision-making; social influence and group behavior; interpersonal relationships; theories of personality."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: applying psychological theory to behavior."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Psychology & cognition",
+     "cat": "Topic"
+    },
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Communication",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Core psychology"
+  },
+  {
+   "id": "C24",
+   "rank": 50,
+   "tier": "Supporting",
+   "title": "Global & cultural perspectives (Honors Global Problems, Global Issues, Anthropology)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Interdisciplinary coursework on global problems, international issues and human cultures.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2022 – 2024",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: scientific approaches to global problems in public health, environment and technology; global political issues; the study of human cultures."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Health equity & SDOH",
+     "cat": "Topic"
+    },
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Responsible AI & policy",
+     "cat": "Topic"
+    },
+    {
+     "name": "Ethics & critical thinking",
+     "cat": "Strengths"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Global perspectives"
+  },
+  {
+   "id": "C26",
+   "rank": 51,
+   "tier": "Supporting",
+   "title": "Spanish minor (language sequence, Hispanic culture & society)",
+   "setting": "School",
+   "type": "Coursework",
+   "summary": "Spanish language and upper-level Hispanic culture coursework, including a writing-intensive course taught in Spanish.",
+   "org": "Georgia State University (BA Psychology)",
+   "role": "Student",
+   "dates": "2020 – 2023",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": "Covers: intermediate Spanish; Hispanic culture and society; Spanish culture in transition."
+    },
+    {
+     "k": "Practiced",
+     "b": "Practiced: critical writing and discussion in Spanish."
+    }
+   ],
+   "tags": [
+    {
+     "name": "Global & cross-cultural work",
+     "cat": "Topic"
+    },
+    {
+     "name": "Research design, writing & ethics",
+     "cat": "Method"
+    },
+    {
+     "name": "Bilingual Spanish–English",
+     "cat": "Tools & skills"
+    },
+    {
+     "name": "Advocacy & empathy",
+     "cat": "Strengths"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Coursework",
+   "short": "Spanish minor"
+  },
+  {
+   "id": "E3",
+   "rank": 52,
+   "tier": "Supporting",
+   "title": "Google UX Design Professional Certificate",
+   "setting": "School",
+   "type": "Certification",
+   "summary": "Professional certificate in UX design (Coursera).",
+   "org": "Google / Coursera",
+   "role": "",
+   "dates": "",
+   "metrics": "",
+   "secs": [
+    {
+     "k": "Covers",
+     "b": ""
+    },
+    {
+     "k": "Practiced",
+     "b": ""
+    },
+    {
+     "k": "Outcome",
+     "b": ""
+    }
+   ],
+   "tags": [
+    {
+     "name": "UX & interaction design",
+     "cat": "Method"
+    }
+   ],
+   "media": [],
+   "group": "School",
+   "sub": "Degrees & credentials",
+   "short": "Google UX certificate"
+  }
+ ],
+ "cloud": {
+  "Behavioral & mental health": {
+   "x": 50.0,
+   "y": 50.01,
+   "fs": 35,
+   "label": "Behavioral & mental health"
+  },
+  "Responsible AI & policy": {
+   "x": 50.58,
+   "y": 43.3,
+   "fs": 35,
+   "label": "Responsible AI & policy"
+  },
+  "S6": {
+   "x": 51.7,
+   "y": 56.19,
+   "fs": 22,
+   "label": "988 crisis ethnography"
+  },
+  "Healthcare technology": {
+   "x": 54.75,
+   "y": 61.59,
+   "fs": 34,
+   "label": "Healthcare technology"
+  },
+  "Applied AI": {
+   "x": 46.22,
+   "y": 35.16,
+   "fs": 33,
+   "label": "Applied AI"
+  },
+  "Disability, neurodiversity & inclusion": {
+   "x": 54.56,
+   "y": 68.36,
+   "fs": 33,
+   "label": "Disability, neurodiversity & inclusion"
+  },
+  "S7": {
+   "x": 48.66,
+   "y": 29.57,
+   "fs": 22,
+   "label": "ABA data-app interviews"
+  },
+  "Health equity & SDOH": {
+   "x": 49.51,
+   "y": 75.38,
+   "fs": 33,
+   "label": "Health equity & SDOH"
+  },
+  "Ethics & critical thinking": {
+   "x": 46.59,
+   "y": 23.48,
+   "fs": 32,
+   "label": "Ethics & critical thinking"
+  },
+  "Advocacy & empathy": {
+   "x": 67.62,
+   "y": 36.66,
+   "fs": 31,
+   "label": "Advocacy & empathy"
+  },
+  "P10": {
+   "x": 32.41,
+   "y": 59.84,
+   "fs": 22,
+   "label": "AI PO workspace"
+  },
+  "Global & cross-cultural work": {
+   "x": 21.01,
+   "y": 36.38,
+   "fs": 31,
+   "label": "Global & cross-cultural work"
+  },
+  "Qualitative methods": {
+   "x": 80.95,
+   "y": 52.62,
+   "fs": 31,
+   "label": "Qualitative methods"
+  },
+  "Research design, writing & ethics": {
+   "x": 49.69,
+   "y": 81.47,
+   "fs": 31,
+   "label": "Research design, writing & ethics"
+  },
+  "W1": {
+   "x": 22.61,
+   "y": 43.8,
+   "fs": 22,
+   "label": "EMR product owner"
+  },
+  "Systems thinking": {
+   "x": 47.7,
+   "y": 17.36,
+   "fs": 31,
+   "label": "Systems thinking"
+  },
+  "Quantitative methods & modeling": {
+   "x": 53.57,
+   "y": 87.86,
+   "fs": 30,
+   "label": "Quantitative methods & modeling"
+  },
+  "Youth & development": {
+   "x": 80.13,
+   "y": 46.23,
+   "fs": 30,
+   "label": "Youth & development"
+  },
+  "S2": {
+   "x": 22.46,
+   "y": 51.28,
+   "fs": 22,
+   "label": "Digital Defender"
+  },
+  "Assistive tech & AAC": {
+   "x": 82.07,
+   "y": 59.54,
+   "fs": 29,
+   "label": "Assistive tech & AAC"
+  },
+  "Communication": {
+   "x": 28.02,
+   "y": 30.16,
+   "fs": 29,
+   "label": "Communication"
+  },
+  "UX & interaction design": {
+   "x": 77.97,
+   "y": 23.36,
+   "fs": 29,
+   "label": "UX & interaction design"
+  },
+  "S4": {
+   "x": 72.16,
+   "y": 31.53,
+   "fs": 22,
+   "label": "Emotive AAC (EIC)"
+  },
+  "Collaboration & leadership": {
+   "x": 78.09,
+   "y": 75.1,
+   "fs": 28,
+   "label": "Collaboration & leadership"
+  },
+  "Product management": {
+   "x": 18.97,
+   "y": 68.63,
+   "fs": 28,
+   "label": "Product management"
+  },
+  "Human factors & usability": {
+   "x": 44.61,
+   "y": 11.38,
+   "fs": 26,
+   "label": "Human factors & usability"
+  },
+  "W3": {
+   "x": 14.59,
+   "y": 57.68,
+   "fs": 22,
+   "label": "Marcus Autism Center"
+  },
+  "Online safety & misinformation": {
+   "x": 58.46,
+   "y": 93.34,
+   "fs": 26,
+   "label": "Online safety & misinformation"
+  },
+  "Psychology & cognition": {
+   "x": 21.32,
+   "y": 17.05,
+   "fs": 26,
+   "label": "Psychology & cognition"
+  },
+  "Programming (Python, R, SQL)": {
+   "x": 72.93,
+   "y": 8.47,
+   "fs": 25,
+   "label": "Programming (Python, R, SQL)"
+  },
+  "S5": {
+   "x": 21.01,
+   "y": 80.69,
+   "fs": 22,
+   "label": "Pantry Partner"
+  },
+  "Data science & visualization": {
+   "x": 20.63,
+   "y": 90.02,
+   "fs": 24,
+   "label": "Data science & visualization"
+  },
+  "Web & AI prototyping": {
+   "x": 26.53,
+   "y": 75.23,
+   "fs": 22,
+   "label": "Web & AI prototyping"
+  },
+  "Bilingual Spanish–English": {
+   "x": 13.5,
+   "y": 62.17,
+   "fs": 21,
+   "label": "Bilingual Spanish–English"
+  },
+  "S1": {
+   "x": 80.79,
+   "y": 14.14,
+   "fs": 22,
+   "label": "SDOH & suicide prediction"
+  },
+  "S8": {
+   "x": 89.25,
+   "y": 33.62,
+   "fs": 22,
+   "label": "nH Predict audit"
+  }
+ }
+}

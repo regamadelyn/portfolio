@@ -1,0 +1,127 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getItems, metaLine, type Item } from '../../lib/items';
+import { CATS, CAT_CLS, CAT_LABEL, THEME_BY_NAME } from '../../lib/themes';
+import { size } from '../../lib/images';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const items = await getItems();
+  return items.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props as { item: Item };
+const all = await getItems();
+const byId = new Map(all.map((i) => [i.id, i]));
+const rel = item.related.map((id) => byId.get(id)!);
+const media = await Promise.all(item.media.map(async (m) => ({ ...m, ...(await size(m.src)) })));
+const rows = CATS.map((c) => ({ label: CAT_LABEL[c], tags: item.tags.filter((t) => t.cat === c) })).filter((r) => r.tags.length);
+const themeHref = (name: string) => `${url('/')}?theme=${THEME_BY_NAME.get(name)!.slug}#gallery`;
+const hasMedia = media.length > 0;
+const isCarousel = media.length > 1;
+---
+<Base title={item.title} description={item.summary} active="">
+  <main id="main" class="light">
+    <div class="wrap page">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div class="crumbs">
+          <a class="btn btn-glass" href={url('/#gallery')} data-back>← Back</a>
+          <span class="mono">{item.setting} · {item.type}</span>
+          {item.featured && <span class="badge mono"><i aria-hidden="true"></i>Featured</span>}
+        </div>
+        <h1 class="display">{item.title}</h1>
+        <p class="mono" style="margin:0;color:#5b6070">{metaLine(item.org, item.role, item.dates)}</p>
+      </div>
+
+      <div class={hasMedia ? 'top-row' : 'top-row solo'}>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <p class="lede">{item.summary}</p>
+          {item.metrics.length > 0 && (
+            <ul class="metrics" style="margin:0;padding:0;list-style:none" aria-label="Highlights">
+              {item.metrics.map((m) => <li class="metric">{m}</li>)}
+            </ul>
+          )}
+        </div>
+        {hasMedia && (
+          <figure class="figure glass" data-carousel aria-roledescription={isCarousel ? 'carousel' : undefined} aria-label={isCarousel ? 'Project images' : undefined}>
+            <div class="frame">
+              {media.map((m, i) => (
+                <img
+                  src={url(m.src)}
+                  alt={m.caption}
+                  width={m.width}
+                  height={m.height}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  style={`object-fit:${m.fit}`}
+                  hidden={i !== 0}
+                  data-slide={i}
+                  data-cap={m.caption}
+                />
+              ))}
+            </div>
+            {isCarousel && (
+              <div class="car-ctrl">
+                <button type="button" class="round chrome-pill" data-prev aria-label="Previous image">←</button>
+                <div class="dots" role="group" aria-label="Choose image">
+                  {media.map((_, i) => (
+                    <button type="button" class={'dot' + (i === 0 ? ' on' : '')} data-dot={i} aria-label={`Image ${i + 1} of ${media.length}`} aria-pressed={i === 0 ? 'true' : 'false'}><i></i></button>
+                  ))}
+                </div>
+                <button type="button" class="round chrome-pill" data-next aria-label="Next image">→</button>
+              </div>
+            )}
+            <figcaption class="cap" aria-live={isCarousel ? 'polite' : undefined} data-caption>{media[0].caption}</figcaption>
+          </figure>
+        )}
+      </div>
+
+      {item.secs.length > 0 && (
+        <div class="secs">
+          {item.secs.map((s) => (
+            <section class="sec glass" aria-label={s.k}>
+              <h2 class="k mono" style="margin:0"><i aria-hidden="true"></i>{s.k}</h2>
+              {s.paras.map((p) => <p>{p}</p>)}
+            </section>
+          ))}
+        </div>
+      )}
+
+      <section class="themes-block glass" aria-labelledby="themes-h">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <h2 id="themes-h" class="display" style="margin:0;font-size:26px">Themes</h2>
+          <p class="mono" style="margin:0;color:#5b6070">Select a theme to see it on the map</p>
+        </div>
+        {rows.map((r) => (
+          <div class="trow">
+            <p class="mono" style="margin:0">{r.label}</p>
+            <div class="chips">
+              {r.tags.map((t) => <a class={`chip cat-${CAT_CLS[t.cat]}`} href={themeHref(t.name)}>{t.name}</a>)}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {rel.length > 0 && (
+        <section style="display:flex;flex-direction:column;gap:18px" aria-labelledby="rel-h">
+          <h2 id="rel-h" class="display" style="margin:0;font-size:26px">Related work</h2>
+          <div class="cards">
+            {rel.map((c) => (
+              <a class="card glass" href={url(`/work/${c.slug}/`)}>
+                <span class="meta mono">{c.setting} · {c.type}</span>
+                <span class="ttl">{c.title}</span>
+                <span class="sum">{c.summary}</span>
+                <span class="tags">{c.tags.slice(0, 3).map((t) => <span class={`tag cat-${CAT_CLS[t.cat]}`}>{t.name}</span>)}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </main>
+
+  <script>
+    import { initItemPage } from '../../scripts/item';
+    initItemPage();
+  </script>
+</Base>

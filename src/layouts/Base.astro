@@ -1,0 +1,85 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/archivo/wdth-italic.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/silkscreen/400.css';
+import '@fontsource/caveat/500.css';
+import '@fontsource/caveat/600.css';
+import '../styles/site.css';
+import { url } from '../lib/url';
+import { SITE } from '../lib/site';
+
+export type NavId = 'home' | 'gallery' | 'experience' | 'contact' | 'about' | '';
+interface Props { title: string; description: string; active: NavId; preload?: string }
+const { title, description, active, preload } = Astro.props;
+
+const nav: { id: NavId; label: string; href: string; icon: string }[] = [
+  { id: 'home', label: 'Home', href: url('/'), icon: 'home' },
+  { id: 'gallery', label: 'Gallery', href: url('/#gallery'), icon: 'gallery' },
+  { id: 'experience', label: 'Experience', href: url('/experience/'), icon: 'experience' },
+  { id: 'contact', label: 'Contact', href: url('/about/#contact'), icon: 'contact' },
+  { id: 'about', label: 'About', href: url('/about/#about-me'), icon: 'about' },
+];
+const icon = (name: string, on: boolean) => url(`/assets/img/icons/${name}-${on ? 'white' : 'ink'}.png`);
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(url('/og.jpg'), Astro.site).href;
+const fullTitle = title === SITE.name ? title : `${title} · ${SITE.name}`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#0f1015" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+  {preload && <link rel="preload" as="image" href={preload} type="image/webp" fetchpriority="high" />}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="bar chrome">
+      <a class="mark mono" href={url('/')} aria-label="Madelyn Rega, home"><span class="mark-dot" aria-hidden="true"></span>MR</a>
+      <nav aria-label="Primary" class="dock" data-active={active}>
+        {nav.map((n) => (
+          <a
+            class={'dock-item' + (active === n.id ? ' is-active' : '')}
+            href={n.href}
+            data-nav={n.id}
+            data-icon-on={icon(n.icon, true)}
+            data-icon-off={icon(n.icon, false)}
+            aria-current={active === n.id ? 'page' : undefined}
+          >
+            <img src={icon(n.icon, active === n.id)} alt="" width="24" height="24" />
+            <span class="dock-label">{n.label}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
+  </header>
+
+  <slot />
+
+  <footer class="footer">
+    <div class="bar chrome">
+      <p class="mono" style="margin:0">© Madelyn Rega</p>
+      <a class="btn btn-ink" href="#top" data-to-top>Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    import { initNav } from '../scripts/nav';
+    initNav();
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.nda-terms
+.env
+.env.*
+.DS_Store
+Thumbs.db
+NOTES-private.md
+.claude/

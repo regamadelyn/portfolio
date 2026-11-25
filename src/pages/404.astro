@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url';
+---
+<Base title="Page not found" description="This page doesn't exist." active="">
+  <main id="main" class="light">
+    <div class="wrap page">
+      <p class="mono" style="margin:0;color:#5b6070">404</p>
+      <h1 class="display">Page not found</h1>
+      <p class="lede">That page doesn't exist. Try the gallery instead.</p>
+      <div><a class="btn btn-ink" href={url('/#gallery')}>Go to the Gallery of Work →</a></div>
+    </div>
+  </main>
+</Base>

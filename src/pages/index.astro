@@ -1,0 +1,179 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+import { THEMES, CAT_CLS, CAT_LABEL } from '../lib/themes';
+import { getItems, getCloud, metaLine } from '../lib/items';
+import { themeCounts } from '../lib/related';
+import { layout, type MapData } from '../lib/layout';
+import { url } from '../lib/url';
+
+const items = await getItems();
+const cloud = getCloud();
+const counts = themeCounts(items);
+
+for (const t of THEMES) if (!cloud[t.name]) throw new Error(`data/site.json cloud has no position for theme "${t.name}"`);
+for (const it of items) if (it.featured && !cloud[it.id]) throw new Error(`data/site.json cloud has no position for featured item ${it.id}`);
+
+const mapData: MapData = {
+  themes: THEMES.map((t) => ({ name: t.name, cat: t.cat })),
+  nodes: items.map((n) => ({ id: n.id, order: n.order, featured: n.featured, tags: n.tags.map((t) => t.name) })),
+  cloud,
+};
+const pos = layout(mapData, null, 'all');
+const style = (p: { x: number; y: number; fs: number; o: number; s: number }, d: number) =>
+  `--x:${p.x.toFixed(2)}%;--y:${p.y.toFixed(2)}%;--fs:${p.fs};--o:${p.o};--s:${p.s};--d:${d}ms`;
+
+const byId = new Map(items.map((i) => [i.id, i]));
+const clientData = {
+  base: url('/').replace(/\/$/, ''),
+  map: mapData,
+  themes: THEMES.map((t) => ({ name: t.name, cat: t.cat, cls: CAT_CLS[t.cat], label: CAT_LABEL[t.cat], desc: t.desc, slug: t.slug, count: counts[t.name] || 0 })),
+  items: items.map((n) => ({
+    id: n.id,
+    title: n.title,
+    short: n.short,
+    cloudLabel: cloud[n.id]?.label ?? n.short,
+    crumb: `${n.setting} · ${n.type}`,
+    meta: metaLine(n.org, n.dates),
+    summary: n.summary,
+    href: url(`/work/${n.slug}/`),
+    img: n.media[0] ? url(n.media[0].src) : '',
+    fit: n.media[0]?.fit === 'cover' ? 'cover' : 'contain',
+    tags: n.tags.map((t) => ({ name: t.name, cls: CAT_CLS[t.cat] })),
+    related: n.related.map((id) => { const r = byId.get(id)!; return { title: r.title, setting: r.setting, href: url(`/work/${r.slug}/`) }; }),
+  })),
+};
+
+const FILTERS = [
+  { id: 'all', label: 'All', color: '' },
+  { id: 'topic', label: 'Topics', color: 'var(--accent)' },
+  { id: 'method', label: 'Methods', color: 'linear-gradient(115deg,#ffd9ec,#fff1cf,#d6fbef)' },
+  { id: 'tools', label: 'Tools & skills', color: '#ffffff' },
+  { id: 'strengths', label: 'Strengths', color: '#aab1bf' },
+  { id: 'feat', label: 'Featured work', color: 'var(--accent)' },
+];
+const hero = url('/assets/img/hero-crt.webp');
+---
+<Base
+  title={SITE.name}
+  description={`${SITE.name}: ${SITE.tagline}. Research, design and product work in health, accessibility and responsible technology.`}
+  active="home"
+  preload={hero}
+>
+  <main id="main">
+    <section id="home" class="hero" style={`background-image:url('${hero}')`}>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-row">
+        <div class="hero-copy">
+          <div style="position:relative">
+            <div class="tail" aria-hidden="true">
+              <div style="left:-21px;top:128px;width:26px;height:36px"></div>
+              <div style="left:-49px;top:148px;width:28px;height:32px"></div>
+              <div style="left:-77px;top:168px;width:28px;height:24px"></div>
+              <div style="left:-101px;top:180px;width:24px;height:12px"></div>
+            </div>
+            <div class="bubble">
+              <h1 class="display">{SITE.hero_bubble}<span class="caret" aria-hidden="true"></span></h1>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding-left:34px">
+            <p class="display hero-name">{SITE.name}</p>
+            <p class="hero-tag">{SITE.tagline}</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-cue">
+        <div class="wrap"><a class="cue mono" href="#gallery">Scroll to explore <span class="arrow" aria-hidden="true">↓</span></a></div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-labelledby="gallery-title" style="scroll-margin-top:30px">
+      <div class="wrap" style="padding-top:56px;display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <p class="pixel" style="margin:0;color:#9ea4b4">Themes · experiences · connections</p>
+            <h2 id="gallery-title" class="display" style="margin:0;font-size:clamp(40px,4.3vw,62px);line-height:1.04;color:#fff">Gallery of Work</h2>
+          </div>
+          <div class="filters pixel" role="group" aria-label="Filter the map">
+            {FILTERS.map((f) => (
+              <button type="button" class={'flt' + (f.id === 'all' ? ' on' : '')} data-filter={f.id} aria-pressed={f.id === 'all' ? 'true' : 'false'}>
+                {f.color && <i style={`background:${f.color}`}></i>}{f.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div class="map-bar" style="padding:0;min-height:0">
+          <div class="focus-info" aria-live="polite" data-focus-info>
+            <p class="mono" style="color:#9ea4b4" data-focus-label hidden></p>
+            <p class="display" style="font-size:24px;line-height:1.2;letter-spacing:-.01em" data-focus-title hidden></p>
+            <p style="font-size:15px;line-height:1.5;color:#c3c7d3" data-focus-desc hidden></p>
+          </div>
+          <button type="button" class="btn btn-glass" data-reset hidden>Show everything</button>
+        </div>
+      </div>
+
+      <div class="map dim" data-map>
+        <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M50 50" fill="none" stroke="rgba(215,220,235,.28)" stroke-width="1" vector-effect="non-scaling-stroke"></path></svg>
+        {THEMES.map((t, i) => {
+          const p = pos['t:' + t.name];
+          return (
+            <button
+              type="button"
+              class={`mi t cat-${CAT_CLS[t.cat]}` + (p.on ? '' : ' off')}
+              style={style(p, p.on ? (i % 9) * 25 : 0)}
+              data-theme={t.name}
+              data-i={i}
+              tabindex={p.on ? undefined : '-1'}
+              aria-hidden={p.on ? undefined : 'true'}
+              aria-label={`${t.name}, ${t.cat}, ${counts[t.name] || 0} connected`}
+            >{t.name}</button>
+          );
+        })}
+        {items.map((n, i) => {
+          const p = pos['n:' + n.id];
+          return (
+            <button
+              type="button"
+              class={'mi n' + (n.featured ? ' feat' : '') + (p.on ? '' : ' off')}
+              style={style(p, p.on ? 120 + (i % 12) * 22 : 0)}
+              data-item={n.id}
+              data-i={i}
+              tabindex={p.on ? undefined : '-1'}
+              aria-hidden={p.on ? undefined : 'true'}
+              aria-label={`${n.title}, ${n.setting} ${n.type}. Opens a preview`}
+            ><span class="lbl">{cloud[n.id]?.label ?? n.short}</span>{n.featured && <span class="pin" aria-hidden="true"></span>}</button>
+          );
+        })}
+      </div>
+      <div style="height:48px"></div>
+    </section>
+  </main>
+
+  <div class="overlay" data-overlay hidden>
+    <button type="button" class="scrim" aria-label="Close preview" tabindex="-1" data-close></button>
+    <div class="camera" role="dialog" aria-modal="true" aria-labelledby="snap-title">
+      <img class="camera-img" src={url('/assets/img/camera-frame.png')} alt="" width="971" height="614" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none" />
+      <button type="button" class="close-btn btn btn-ink mono" data-close style="min-height:38px;padding:0 16px;font-size:12px">Close · Esc</button>
+      <div class="screen">
+        <p class="mono" style="margin:0;color:#5b6070" data-pv="crumb"></p>
+        <h3 id="snap-title" class="display" style="margin:0;font-size:clamp(22px,2.4vw,32px);line-height:1.12" data-pv="title"></h3>
+        <p class="mono" style="margin:0;color:#5b6070;font-size:11px" data-pv="meta"></p>
+        <div class="thumb" data-pv="thumb">
+          <div class="frame"><img alt="" data-pv="img" width="120" height="90" /></div>
+          <p style="margin:0;font-size:15px;line-height:1.45;color:#2c303b" data-pv="summary-thumb"></p>
+        </div>
+        <p style="margin:0;font-size:16px;line-height:1.5;color:#2c303b" data-pv="summary"></p>
+        <div><a class="btn btn-ink" data-pv="open" href="#">Open the full page →</a></div>
+        <div class="chips" data-pv="tags"></div>
+        <p class="mono" style="margin:6px 0 0;color:#5b6070">Related work</p>
+        <div style="display:flex;flex-direction:column;gap:8px" data-pv="related"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/json" id="gallery-data" set:html={JSON.stringify(clientData).replace(/</g, '\\u003c')}></script>
+  <script>
+    import { initGallery } from '../scripts/gallery';
+    initGallery();
+  </script>
+</Base>

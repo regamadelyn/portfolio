@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { getItems, metaLine } from '../lib/items';
+import { CAT_CLS } from '../lib/themes';
+import { url } from '../lib/url';
+
+const items = await getItems();
+const GROUPS = [
+  { name: 'Work', id: 'exp-work', blurb: 'Roles and product case studies', subs: ['Roles', 'Product, design & research case studies'] },
+  { name: 'School', id: 'exp-school', blurb: 'Research, degrees and coursework', subs: ['Research & projects', 'Degrees & credentials', 'Coursework'] },
+  { name: 'Volunteer', id: 'exp-volunteer', blurb: 'Service and advocacy', subs: ['Service & advocacy'] },
+];
+const groups = GROUPS.map((g) => ({
+  ...g,
+  subs: g.subs.map((s) => ({ name: s, items: items.filter((n) => n.group === g.name && n.sub === s) })).filter((s) => s.items.length),
+}));
+---
+<Base title="Experience" description="Work, school and volunteer experience of Madelyn Rega: research, product and design roles, degrees, coursework and service." active="experience">
+  <main id="main" class="light">
+    <div class="wrap page">
+      <div class="exp-head">
+        <h1 class="display">Experience</h1>
+        <nav class="jump" aria-label="Jump to section">
+          {groups.map((g) => <a class="btn btn-glass" href={'#' + g.id}>{g.name}</a>)}
+        </nav>
+      </div>
+      {groups.map((g) => (
+        <section id={g.id} style="display:flex;flex-direction:column;gap:20px;scroll-margin-top:84px" aria-labelledby={g.id + '-h'}>
+          <div class="group-head chrome">
+            <h2 class="display" id={g.id + '-h'}>{g.name}</h2>
+            <p class="mono" style="margin:0 0 4px">{g.blurb}</p>
+          </div>
+          {g.subs.map((sb) => (
+            <>
+              <h3 class="sub-head mono">{sb.name}</h3>
+              <div class="cards">
+                {sb.items.map((c) => (
+                  <a class="card glass" href={url(`/work/${c.slug}/`)}>
+                    <span class="meta mono">{metaLine(c.type, c.dates)}</span>
+                    <span class="ttl">{c.title}</span>
+                    <span class="sum">{c.summary}</span>
+                    <span class="tags">{c.tags.slice(0, 3).map((t) => <span class={`tag cat-${CAT_CLS[t.cat]}`}>{t.name}</span>)}</span>
+                  </a>
+                ))}
+              </div>
+            </>
+          ))}
+        </section>
+      ))}
+    </div>
+  </main>
+</Base>

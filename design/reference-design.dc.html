@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Madelyn Rega — Personal Site</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&amp;family=Caveat:wght@500;600&amp;family=IBM+Plex+Mono:wght@500&amp;family=Silkscreen&amp;display=swap">
+<style>
+:root{--ink:#0f1015;--ink2:#1b1d26;--pearl:#eceef4;--muted:#5b6070;--line:rgba(15,16,21,.12);--iri:linear-gradient(115deg,#ffd9ec 0%,#fff1cf 45%,#d6fbef 100%);--iri-text:#ffc9e3;--ease:cubic-bezier(.2,.8,.2,1)}
+body{margin:0;background:var(--ink)}
+.pixel{font-family:'Silkscreen',monospace;font-weight:400;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:500;font-size:12px;line-height:18px;letter-spacing:.06em;text-transform:uppercase}
+.display{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:700;letter-spacing:-.02em}
+.wrap{max-width:1440px;margin:0 auto;padding-left:clamp(20px,4.4vw,64px);padding-right:clamp(20px,4.4vw,64px)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.light :focus-visible{outline-color:var(--ink)}
+
+/* silver: soft vertical falloff, a gentle horizon, a diagonal sheen, crisp top edge */
+.chrome{color:var(--ink);background:
+ linear-gradient(104deg,rgba(255,255,255,0) 28%,rgba(255,255,255,.55) 44%,rgba(255,255,255,0) 58%),
+ linear-gradient(180deg,#fbfcfe 0%,#e8ebf1 22%,#d0d5de 46%,#bfc5d0 52%,#d9dde5 70%,#f1f3f7 100%);
+ box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(15,16,21,.22)}
+.chrome-pill{color:var(--ink);background:
+ linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 50%),
+ linear-gradient(180deg,#f6f7fa 0%,#d3d8e1 50%,#c2c8d3 54%,#e9ecf1 100%);
+ border:1px solid rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(15,16,21,.25),0 6px 18px rgba(15,16,21,.18),inset 0 -1px 0 rgba(15,16,21,.18)}
+
+/* header + dock */
+.site-header{position:sticky;top:10px;z-index:30;padding:0 16px;height:0;overflow:visible}
+.bar{max-width:1080px;margin:0 auto;height:60px;padding:0 10px 0 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-radius:8px;border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(15,16,21,.25),0 10px 30px rgba(0,0,0,.35)}
+.mark{appearance:none;border:0;background:none;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:10px;padding:0}
+.mark-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--ink),0 0 12px var(--accent)}
+.dock{display:flex;gap:4px;padding:4px;border-radius:8px;background:rgba(15,16,21,.08);box-shadow:inset 0 1px 2px rgba(15,16,21,.2),0 1px 0 rgba(255,255,255,.8)}
+.dock-item{appearance:none;border:0;cursor:pointer;display:flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 10px;border-radius:5px;background:transparent;color:var(--ink);font:500 13px/18px 'Archivo',sans-serif;transition:background .2s,color .2s}
+.dock-item img{width:24px;height:24px;display:block;image-rendering:pixelated}
+.dock-item:hover{background:rgba(255,255,255,.7)}
+.dock-item.is-active{background:var(--ink);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 2px 6px rgba(15,16,21,.3)}
+
+/* hero */
+.hero{position:relative;min-height:clamp(660px,100vh,920px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:url('/_blob/b26960049076ce8a8fe1f7ab1c579291') 30% 50%/cover}
+.hero-copy{width:min(560px,100%);margin-right:clamp(16px,1.6vw,28px);display:flex;flex-direction:column;gap:44px}
+.bubble{background:var(--accent);min-height:190px;padding:32px;display:flex;align-items:center;border-radius:4px;box-shadow:inset 0 2px 0 rgba(255,255,255,.55),inset 0 -3px 0 rgba(0,0,0,.08),0 18px 40px rgba(0,0,0,.35);animation:pop .5s steps(4,end) both .15s}
+.tail div{position:absolute;background:var(--accent)}
+.tail{animation:pop .4s steps(3,end) both}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.caret{display:inline-block;width:.42em;height:.82em;background:var(--ink);margin-left:.08em;vertical-align:-.04em;animation:blink 1.06s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cue{appearance:none;border:0;background:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;color:#fff;min-height:44px;padding:0}
+.cue .arrow{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+.cue:hover{color:var(--accent)}
+@keyframes bob{50%{transform:translateY(4px)}}
+
+/* gallery / theme map */
+.gallery{position:relative;color:#f3f4f8;background:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1.2px) 0 0/22px 22px,var(--ink)}
+.map-bar{display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;padding-top:22px;padding-bottom:6px;min-height:92px}
+.focus-info{display:flex;flex-direction:column;gap:4px;max-width:760px}
+.focus-info p{margin:0}
+.map{position:relative;max-width:1440px;margin:0 auto;height:clamp(640px,62.5vw,900px)}
+.lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0}
+.lines.draw{animation:draw .5s ease-out .55s both}
+@keyframes draw{from{opacity:0}to{opacity:1}}
+.mi{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%) scale(var(--s));opacity:var(--o);appearance:none;border:0;background:none;cursor:pointer;padding:6px 10px;white-space:nowrap;text-align:center;
+ font-size:min(calc(var(--fs) * 1px),calc(var(--fs) * 0.0694vw));line-height:1.2;
+ transition:left .75s var(--ease) var(--d),top .75s var(--ease) var(--d),opacity .45s ease var(--d),transform .45s var(--ease) var(--d),font-size .5s var(--ease),background .2s,color .2s,box-shadow .2s}
+.mi.off{pointer-events:none}
+.mi.t{font-family:'Archivo',sans-serif;font-stretch:106%;font-weight:700;color:#f3f4f8;letter-spacing:-.01em}
+.mi.t.cat-method{color:var(--iri-text);font-weight:600}
+.mi.t.cat-tools{color:#dfe3ea;font-weight:500;font-style:italic}
+.mi.t.cat-strengths{color:#b4bac7;font-weight:500}
+.mi.t:hover{color:var(--accent)}
+.mi.n{font-family:'IBM Plex Mono',monospace;font-weight:500;color:#fff;letter-spacing:-.01em}
+.mi.n .pin{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-left:8px;vertical-align:.3em;box-shadow:0 0 8px var(--accent)}
+.mi.n:hover{color:var(--accent)}
+.map.focused .mi.n{font-family:'Archivo',sans-serif;font-weight:500;white-space:normal;max-width:180px;padding:8px 14px;border-radius:4px;color:#f6f7fb;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.15);backdrop-filter:blur(8px)}
+.map.focused .mi.n:hover{background:rgba(255,255,255,.92);color:var(--ink)}
+.map.focused .mi.n.feat{border-color:color-mix(in srgb,var(--accent) 70%,transparent)}
+.mi.center{color:var(--ink)!important;padding:14px 26px;border-radius:6px;white-space:normal;max-width:340px;z-index:3}
+.mi.center:hover{color:var(--ink)}
+.mi.center::after{content:'';position:absolute;inset:-14px;border-radius:10px;border:1px dashed rgba(255,255,255,.25);pointer-events:none}
+.map:not(.focused) .mi:hover{z-index:2}
+.map.dim:not(.focused):hover .mi:not(:hover){opacity:calc(var(--o) * .4)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flt{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 14px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#d9dce5;transition:background .2s,color .2s,border-color .2s}
+.flt:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.flt i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.flt.on{background:linear-gradient(180deg,#fbfcfe,#d4d9e2);border-color:#fff;color:var(--ink);box-shadow:inset 0 1px 0 #fff,0 4px 14px rgba(0,0,0,.35)}
+
+/* pills + chips */
+.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:5px;font:600 14px/20px 'Archivo',sans-serif;transition:transform .15s,box-shadow .15s,background .15s,color .15s}
+.btn-ink{background:var(--ink);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 4px 12px rgba(15,16,21,.25)}
+.btn-ink:hover{color:var(--accent);transform:translateY(-1px)}
+.btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn-glass:hover{background:#fff;color:var(--ink)}
+.light .btn-glass{color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 50%),linear-gradient(180deg,#f6f7fa 0%,#d3d8e1 50%,#c2c8d3 54%,#e9ecf1 100%);border:1px solid #9aa1ae;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(15,16,21,.2)}
+.light .btn-glass:hover{background:#fff;border-color:var(--ink)}
+.chip{appearance:none;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;min-height:32px;padding:4px 12px;border-radius:3px;font:500 13px/18px 'Archivo',sans-serif;color:var(--ink);transition:transform .15s,box-shadow .15s}
+.chip:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(15,16,21,.18)}
+.chip.cat-topic{background:var(--accent)}
+.chip.cat-method{background:var(--iri);border-color:rgba(15,16,21,.12)}
+.chip.cat-tools{background:#fff;border-color:var(--ink)}
+.chip.cat-strengths{background:linear-gradient(180deg,#fafbfd,#d6dbe3);border-color:rgba(15,16,21,.1)}
+.tag{display:inline-flex;align-items:center;padding:2px 9px;border-radius:3px;font:500 12px/18px 'Archivo',sans-serif;color:var(--ink)}
+.tag.cat-topic{background:color-mix(in srgb,var(--accent) 75%,#fff)}
+.tag.cat-method{background:var(--iri);box-shadow:inset 0 0 0 1px rgba(15,16,21,.1)}
+.tag.cat-tools{background:#fff;box-shadow:inset 0 0 0 1px var(--ink)}
+.tag.cat-strengths{background:#e3e6ec}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:3px;background:var(--ink);color:#fff}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+
+/* light pages */
+.light{color:var(--ink);background:
+ linear-gradient(180deg,#f4f5f8 0,#e7e9ee 100%);min-height:calc(100vh - 64px)}
+.glass{background:rgba(255,255,255,.62);border:1px solid rgba(255,255,255,.95);border-radius:6px;box-shadow:inset 0 1px 0 #fff,inset 0 0 0 1px rgba(15,16,21,.06),0 1px 0 rgba(15,16,21,.06),0 10px 24px rgba(30,34,50,.08);backdrop-filter:blur(14px)}
+.page{padding-top:110px;padding-bottom:96px;display:flex;flex-direction:column;gap:40px}
+.page h1{margin:0;font-size:clamp(38px,4.2vw,60px);line-height:1.04}
+.lede{margin:0;font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:#2c303b;max-width:880px}
+.crumbs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted)}
+.top-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:start}
+.top-row.solo{grid-template-columns:minmax(0,1fr)}
+.metrics{display:flex;flex-wrap:wrap;gap:8px}
+.metric{padding:8px 14px;border-radius:4px;background:rgba(255,255,255,.7);border:1px solid #fff;box-shadow:0 2px 8px rgba(40,46,80,.07);font:500 14px/20px 'Archivo',sans-serif}
+.secs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.sec{padding:26px;display:flex;flex-direction:column;gap:12px}
+.sec p{margin:0;font-size:16px;line-height:1.6;color:#2c303b}
+.sec .k{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.sec .k i{width:8px;height:8px;border-radius:1px;background:var(--ink)}
+.figure{margin:0;padding:14px;display:flex;flex-direction:column;gap:12px}
+.frame{position:relative;border-radius:3px;overflow:hidden;background:#fff;aspect-ratio:16/10;box-shadow:inset 0 0 0 1px rgba(15,16,21,.06)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cap{margin:0;font-size:14px;line-height:1.5;color:var(--muted);padding:0 4px}
+.car-ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 4px}
+.dots{display:flex;gap:8px}
+.dot{appearance:none;border:0;cursor:pointer;width:28px;height:28px;padding:0;background:none;display:flex;align-items:center;justify-content:center}
+.dot i{width:9px;height:9px;border-radius:50%;background:rgba(15,16,21,.22);transition:background .2s,transform .2s}
+.dot.on i{background:var(--ink);transform:scale(1.25)}
+.round{appearance:none;cursor:pointer;width:44px;height:44px;border-radius:6px;display:flex;align-items:center;justify-content:center;font:600 18px/1 'Archivo',sans-serif}
+.themes-block{padding:28px;display:flex;flex-direction:column;gap:16px}
+.trow{display:grid;grid-template-columns:140px 1fr;gap:12px;align-items:start}
+.trow .mono{padding-top:7px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{appearance:none;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:10px;padding:22px;color:var(--ink);transition:transform .2s var(--ease),box-shadow .2s,background .2s}
+.card{background-image:linear-gradient(180deg,#fbfcfe 0,#d6dbe3 3px,transparent 3px)}
+.card:hover{transform:translate(-2px,-2px);background:rgba(255,255,255,.92);box-shadow:4px 4px 0 var(--ink)}
+.card .ttl{font-family:'Archivo',sans-serif;font-stretch:115%;font-weight:700;font-size:20px;line-height:1.25;letter-spacing:-.01em}
+.card .sum{font-size:15px;line-height:1.5;color:#3a3f4b;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card .meta{color:var(--muted)}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:4px}
+.group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px;border-radius:6px}
+.group-head h2{margin:0;font-size:clamp(28px,2.6vw,40px);line-height:1.1}
+.sub-head{margin:8px 0 0;color:var(--muted);display:flex;align-items:center;gap:10px}
+.sub-head::after{content:'';flex:1;height:1px;background:var(--line)}
+.jump{display:flex;gap:8px;flex-wrap:wrap}
+.exp-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 24px;flex-wrap:wrap}
+
+/* camera preview */
+.overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;animation:fade .2s both}
+.scrim{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;background:rgba(15,16,21,.78);backdrop-filter:blur(8px);cursor:pointer}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.camera{position:relative;width:min(1000px,94vw);aspect-ratio:971/614;animation:shutter .35s var(--ease) both}
+@keyframes shutter{from{opacity:0;transform:scale(.94) translateY(12px)}to{opacity:1;transform:none}}
+.screen{position:absolute;left:8.4%;top:13.9%;width:60.2%;height:79.8%;border-radius:3px;color:var(--ink);background:linear-gradient(180deg,#f7f8fb,#e9ecf2);border:2px solid var(--ink);padding:22px 24px;overflow:auto;display:flex;flex-direction:column;gap:12px}
+.close-btn{position:absolute;right:6%;top:2.5%;z-index:2}
+.thumb{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+.thumb .frame{aspect-ratio:4/3;border-radius:3px}
+.rel{appearance:none;cursor:pointer;width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-radius:4px;background:rgba(255,255,255,.75);border:1px solid #fff;box-shadow:0 1px 4px rgba(40,46,80,.08);color:var(--ink);transition:background .15s,transform .15s}
+.rel:hover{background:#fff;transform:translateX(3px)}
+.rel b{font:600 15px/1.3 'Archivo',sans-serif}
+
+.photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.frame.portrait{aspect-ratio:3/4}
+.about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.tag.big{font-size:14px;line-height:20px;padding:6px 14px}
+.blist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.blist li{position:relative;padding-left:26px;font-size:16px;line-height:1.5;color:#2c303b}
+.blist li::before{content:'';position:absolute;left:0;top:4px;width:15px;height:15px;border-radius:2px;border:2px solid var(--ink);background:#fff;box-sizing:border-box}
+.blist li.done{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.blist li.done::before{background:var(--accent)}
+.blist li.done::after{content:'';position:absolute;left:5px;top:6px;width:4px;height:8px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fav{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-top:1px solid var(--line)}
+.fav:first-of-type{border-top:0;padding-top:0}
+.fav .mono{color:var(--muted)}
+.fav .display{font-size:24px;line-height:1.2}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr}.photos{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.photos{grid-template-columns:1fr}}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:20px;align-items:start}
+.cinfo{padding:28px;display:flex;flex-direction:column;gap:18px}
+.cline{display:flex;flex-direction:column;gap:2px}
+.cline .mono{color:var(--muted)}
+.cline a{font:600 18px/1.4 'Archivo',sans-serif;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.cline a:hover{background:var(--accent);text-decoration:none}
+.cvs{display:flex;flex-direction:column;gap:8px;padding-top:8px;border-top:1px solid var(--line)}
+.cv{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:4px;background:#fff;border:1px solid rgba(15,16,21,.15);text-decoration:none;font:600 15px/1.3 'Archivo',sans-serif}
+.cv .mono{color:var(--muted)}
+.cform{padding:28px;display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{color:var(--muted)}
+.field input,.field textarea{font:400 16px/1.4 'Archivo',sans-serif;color:var(--ink);padding:12px 14px;border-radius:3px;border:1px solid #9aa1ae;background:#fff;box-shadow:inset 0 2px 3px rgba(15,16,21,.08)}
+.field textarea{min-height:140px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:2px solid var(--ink);outline-offset:0;border-color:var(--ink)}
+.form-note{margin:0;font-size:13px;color:var(--muted)}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.postcard{appearance:none;border:0;padding:0;background:none;cursor:pointer;perspective:1600px;aspect-ratio:3/4;width:100%;display:block}
+.pc-inner{position:relative;display:block;width:100%;height:100%;transition:transform .8s var(--ease);transform-style:preserve-3d}
+.postcard.flipped .pc-inner{transform:rotateY(180deg)}
+.postcard:hover .pc-inner{transform:rotateY(-6deg)}
+.postcard.flipped:hover .pc-inner{transform:rotateY(186deg)}
+.pc-face{position:absolute;inset:0;display:block;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:3px;overflow:hidden;border:8px solid #fff;box-shadow:0 1px 0 rgba(15,16,21,.1),0 14px 30px rgba(30,34,50,.18)}
+.pc-front img{width:100%;height:100%;object-fit:cover;display:block}
+.pc-hint{position:absolute;right:10px;bottom:10px;padding:4px 8px;border-radius:2px;background:rgba(15,16,21,.72);color:#fff;font-size:10px}
+.pc-back{transform:rotateY(180deg);background:#f7f4ec;display:grid;grid-template-columns:1.15fr .85fr;text-align:left}
+.pc-msg{display:flex;align-items:center;padding:20px 16px 20px 18px;font:600 clamp(22px,2vw,30px)/1.15 'Caveat',cursive;color:#1d2a52;border-right:1px solid rgba(15,16,21,.25);margin:18px 0}
+.pc-side{display:flex;flex-direction:column;align-items:stretch;gap:16px;padding:18px 14px}
+.pc-stamp{align-self:flex-end;width:52px;height:62px;display:flex;align-items:center;justify-content:center;background:var(--accent);outline:2px dashed #f7f4ec;outline-offset:-5px;box-shadow:0 0 0 1px rgba(15,16,21,.25)}
+.pc-mark{align-self:flex-end;margin-top:-30px;margin-right:30px;width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(29,42,82,.55);color:rgba(29,42,82,.7);display:flex;align-items:center;justify-content:center;text-align:center;font-size:9px;transform:rotate(-14deg)}
+.pc-line{display:block;height:1px;background:rgba(15,16,21,.3);margin-top:12px}
+.footer{padding:24px 16px 28px}
+.footer .bar{height:auto;min-height:64px;flex-wrap:wrap;padding:10px 10px 10px 18px}
+
+@media (max-width:900px){
+ .top-row{grid-template-columns:minmax(0,1fr)}
+ .trow{grid-template-columns:1fr}
+ .trow .mono{padding-top:0}
+}
+@media (max-width:760px){
+ .hero-copy{margin:0 20px!important;width:auto!important}
+ .tail{display:none}
+ .dock-label{display:none}
+ .dock-item{padding:0 10px}
+ .map{height:780px}
+ .mi{font-size:max(12px,calc(var(--fs) * .5px))}
+ .camera{aspect-ratio:auto;width:100%}
+ .camera-img{display:none}
+ .screen{position:relative;left:auto;top:auto;width:100%;height:auto;max-height:84vh}
+ .close-btn{right:10px;top:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.lines{opacity:1}}
+</style>
+</helmet>
+<div style="--accent: {{accent}}; background: #0f1015; color: #f3f4f8; font-family: 'Archivo', system-ui, sans-serif; min-height: 100vh">
+
+<header class="site-header">
+<div class="bar chrome">
+<button type="button" class="mark mono" onClick="{{goHome}}" aria-label="Madelyn Rega, home"><span class="mark-dot" aria-hidden="true"></span>MR</button>
+<nav aria-label="Primary" class="dock">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="4">
+<button type="button" class="{{n.cls}}" onClick="{{n.go}}" aria-current="{{n.current}}"><img src="{{n.icon}}" alt=""><span class="dock-label">{{n.label}}</span></button>
+</sc-for>
+</nav>
+</div>
+</header>
+
+<sc-if value="{{isHome}}" hint-placeholder-val="{{ true }}">
+<section id="home" class="hero">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,16,21,0) 50%, rgba(15,16,21,.75) 85%, #0f1015 100%)"></div>
+<div style="position: relative; width: 100%; display: flex; justify-content: flex-end">
+<div class="hero-copy">
+<div style="position: relative">
+<div class="tail" aria-hidden="true">
+<div style="left: -21px; top: 128px; width: 26px; height: 36px"></div>
+<div style="left: -49px; top: 148px; width: 28px; height: 32px"></div>
+<div style="left: -77px; top: 168px; width: 28px; height: 24px"></div>
+<div style="left: -101px; top: 180px; width: 24px; height: 12px"></div>
+</div>
+<div class="bubble">
+<h1 class="display" style="margin: 0; color: #0f1015; font-size: clamp(40px, 4.3vw, 62px); line-height: 1.06">Hi, welcome to my work.<span class="caret" aria-hidden="true"></span></h1>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding-left: 34px">
+<p class="display" style="margin: 0; font-size: clamp(30px, 2.8vw, 40px); line-height: 1.2; color: #fff">Madelyn Rega, MHCI</p>
+<p style="margin: 0; font-size: clamp(18px, 1.6vw, 23px); line-height: 1.35; color: #e4e6ee">innovator, researcher, designer, advocate</p>
+</div>
+</div>
+</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 28px">
+<div class="wrap"><button type="button" class="cue mono" onClick="{{goGallery}}">Scroll to explore <span class="arrow" aria-hidden="true">↓</span></button></div>
+</div>
+</section>
+
+<section id="gallery" class="gallery" aria-labelledby="gallery-title">
+<div class="wrap" style="padding-top: 56px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p class="pixel" style="margin: 0; color: #9ea4b4">Themes · experiences · connections</p>
+<h2 id="gallery-title" class="display" style="margin: 0; font-size: clamp(40px, 4.3vw, 62px); line-height: 1.04; color: #fff">Gallery of Work</h2>
+</div>
+<div class="filters pixel" role="group" aria-label="Filter the map">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="6"><button type="button" class="{{f.cls}}" onClick="{{f.go}}" aria-pressed="{{f.on}}"><sc-if value="{{f.dot}}" hint-placeholder-val="{{ true }}"><i style="background: {{f.color}}"></i></sc-if>{{f.label}}</button></sc-for>
+</div>
+</div>
+<div class="map-bar" style="padding: 0; min-height: 0">
+<div class="focus-info" aria-live="polite">
+<sc-if value="{{hasFocusLabel}}" hint-placeholder-val="{{ false }}"><p class="mono" style="color: #9ea4b4">{{focusLabel}}</p></sc-if>
+<sc-if value="{{isFocused}}" hint-placeholder-val="{{ false }}"><p class="display" style="font-size: 24px; line-height: 1.2; letter-spacing: -.01em">{{focusTitle}}</p>
+<p style="font-size: 15px; line-height: 1.5; color: #c3c7d3">{{focusDesc}}</p></sc-if>
+</div>
+<sc-if value="{{isFocused}}" hint-placeholder-val="{{ false }}"><button type="button" class="btn btn-glass" onClick="{{resetMap}}">Show everything</button></sc-if>
+</div>
+</div>
+
+<div class="{{mapCls}}">
+<svg class="lines" ref="{{linesRef}}" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="{{linePath}}" fill="none" stroke="rgba(215,220,235,.28)" stroke-width="1" vector-effect="non-scaling-stroke"></path></svg>
+<sc-for list="{{mapItems}}" as="m" hint-placeholder-count="36">
+<button type="button" class="{{m.cls}}" style="--x: {{m.x}}%; --y: {{m.y}}%; --fs: {{m.fs}}; --o: {{m.o}}; --s: {{m.s}}; --d: {{m.d}}ms" onClick="{{m.click}}" tabindex="{{m.tab}}" aria-hidden="{{m.hidden}}" aria-label="{{m.aria}}">{{m.label}}<sc-if value="{{m.pin}}" hint-placeholder-val="{{ false }}"><span class="pin" aria-hidden="true"></span></sc-if></button>
+</sc-for>
+</div>
+<div style="height: 48px"></div>
+</section>
+</sc-if>
+
+<sc-if value="{{isItem}}" hint-placeholder-val="{{ false }}">
+<main class="light">
+<div class="wrap page">
+<div style="display: flex; flex-direction: column; gap: 18px">
+<div class="crumbs">
+<button type="button" class="btn btn-glass" onClick="{{goBack}}">← {{backLabel}}</button>
+<span class="mono">{{item.crumb}}</span>
+<sc-if value="{{item.featured}}" hint-placeholder-val="{{ false }}"><span class="badge mono"><i></i>Featured</span></sc-if>
+</div>
+<h1 class="display">{{item.title}}</h1>
+<p class="mono" style="margin: 0; color: #5b6070">{{item.meta}}</p>
+</div>
+
+<div class="{{item.topCls}}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<p class="lede">{{item.summary}}</p>
+<sc-if value="{{item.hasMetrics}}" hint-placeholder-val="{{ false }}">
+<div class="metrics">
+<sc-for list="{{item.metrics}}" as="x" hint-placeholder-count="3"><span class="metric">{{x}}</span></sc-for>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{item.hasMedia}}" hint-placeholder-val="{{ false }}">
+<figure class="figure glass">
+<div class="frame"><img src="{{slide.src}}" alt="{{slide.cap}}" style="object-fit: {{slide.fit}}"></div>
+<sc-if value="{{item.isCarousel}}" hint-placeholder-val="{{ false }}">
+<div class="car-ctrl">
+<button type="button" class="round chrome-pill" onClick="{{prevSlide}}" aria-label="Previous image">←</button>
+<div class="dots" role="group" aria-label="Choose image">
+<sc-for list="{{dots}}" as="dt" hint-placeholder-count="4"><button type="button" class="{{dt.cls}}" onClick="{{dt.go}}" aria-label="{{dt.aria}}" aria-pressed="{{dt.on}}"><i></i></button></sc-for>
+</div>
+<button type="button" class="round chrome-pill" onClick="{{nextSlide}}" aria-label="Next image">→</button>
+</div>
+</sc-if>
+<figcaption class="cap">{{slide.cap}}</figcaption>
+</figure>
+</sc-if>
+</div>
+
+<div class="secs">
+<sc-for list="{{item.secs}}" as="s" hint-placeholder-count="3">
+<section class="sec glass">
+<p class="k mono"><i aria-hidden="true"></i>{{s.k}}</p>
+<p>{{s.b}}</p>
+</section>
+</sc-for>
+</div>
+
+<section class="themes-block glass" aria-labelledby="themes-h">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<h2 id="themes-h" class="display" style="margin: 0; font-size: 26px">Themes</h2>
+<p class="mono" style="margin: 0; color: #5b6070">Select a theme to see it on the map</p>
+</div>
+<sc-for list="{{item.tagRows}}" as="r" hint-placeholder-count="4">
+<div class="trow">
+<p class="mono" style="margin: 0">{{r.label}}</p>
+<div class="chips">
+<sc-for list="{{r.tags}}" as="t" hint-placeholder-count="3"><button type="button" class="{{t.cls}}" onClick="{{t.go}}">{{t.name}}</button></sc-for>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 18px" aria-labelledby="rel-h">
+<h2 id="rel-h" class="display" style="margin: 0; font-size: 26px">Related work</h2>
+<div class="cards">
+<sc-for list="{{item.related}}" as="c" hint-placeholder-count="3">
+<button type="button" class="card glass" onClick="{{c.go}}">
+<span class="meta mono">{{c.meta}}</span>
+<span class="ttl">{{c.title}}</span>
+<span class="sum">{{c.summary}}</span>
+<span class="tags"><sc-for list="{{c.tags}}" as="t" hint-placeholder-count="3"><span class="{{t.cls}}">{{t.name}}</span></sc-for></span>
+</button>
+</sc-for>
+</div>
+</section>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{isExperience}}" hint-placeholder-val="{{ false }}">
+<main class="light">
+<div class="wrap page">
+<div class="exp-head">
+<h1 class="display">Experience</h1>
+<div class="jump" role="group" aria-label="Jump to section">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3"><a class="btn btn-glass" href="{{g.href}}">{{g.name}}</a></sc-for>
+</div>
+</div>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<section id="{{g.id}}" style="display: flex; flex-direction: column; gap: 20px; scroll-margin-top: 84px" aria-label="{{g.name}}">
+<div class="group-head chrome">
+<h2 class="display">{{g.name}}</h2>
+<p class="mono" style="margin: 0 0 4px">{{g.blurb}}</p>
+</div>
+<sc-for list="{{g.subs}}" as="sb" hint-placeholder-count="2">
+<p class="sub-head mono">{{sb.name}}</p>
+<div class="cards">
+<sc-for list="{{sb.items}}" as="c" hint-placeholder-count="3">
+<button type="button" class="card glass" onClick="{{c.go}}">
+<span class="meta mono">{{c.meta}}</span>
+<span class="ttl">{{c.title}}</span>
+<span class="sum">{{c.summary}}</span>
+<span class="tags"><sc-for list="{{c.tags}}" as="t" hint-placeholder-count="3"><span class="{{t.cls}}">{{t.name}}</span></sc-for></span>
+</button>
+</sc-for>
+</div>
+</sc-for>
+</section>
+</sc-for>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{isAbout}}" hint-placeholder-val="{{ false }}">
+<main class="light">
+<div class="wrap page">
+<section id="contact" aria-labelledby="contact-h" style="display: flex; flex-direction: column; gap: 20px; scroll-margin-top: 84px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p class="mono" style="margin: 0; color: #5b6070">Contact</p>
+<h1 id="contact-h" class="display">Let's talk</h1>
+<p class="lede">I'm happy to hear about research, roles and collaborations.</p>
+</div>
+<div class="contact-grid">
+<div class="glass cinfo">
+<p class="display" style="margin: 0; font-size: 28px; line-height: 1.15">Madelyn Rega, MHCI</p>
+<div class="cline"><span class="mono">Email</span><a href="mailto:madelynrega@gmail.com">madelynrega@gmail.com</a></div>
+<div class="cline"><span class="mono">LinkedIn</span><a href="https://www.linkedin.com/in/madelyn-rega-/" target="_blank" rel="noopener noreferrer">linkedin.com/in/madelyn-rega-</a></div>
+<div class="cvs">
+<span class="mono" style="color: #5b6070">Download</span>
+<a class="cv" href="/_blob/486ebc521e34838f780a2e3e1613ee7c" download="Rega_Madelyn_Academic_CV.pdf" target="_blank" rel="noopener"><span>Academic CV</span><span class="mono">PDF ↓</span></a>
+<a class="cv" href="/_blob/f61c0e1c3bff7212ef40fb560b93af00" download="Rega_Madelyn_CV.pdf" target="_blank" rel="noopener"><span>Recent CV</span><span class="mono">PDF ↓</span></a>
+</div>
+</div>
+<form class="glass cform" onSubmit="{{sendMessage}}" aria-label="Contact form">
+<div class="field"><label class="mono" for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required ref="{{nameRef}}"></div>
+<div class="field"><label class="mono" for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required ref="{{emailRef}}"></div>
+<div class="field"><label class="mono" for="cf-msg">Message</label><textarea id="cf-msg" name="message" required ref="{{msgRef}}"></textarea></div>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+<p class="form-note">Opens your email app with your message ready to send.</p>
+<button type="submit" class="btn btn-ink">Send message →</button>
+</div>
+</form>
+</div>
+</section>
+
+<div id="about-me" style="display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 84px">
+<p class="mono" style="margin: 0; color: #5b6070">About</p>
+<h2 class="display" style="margin: 0; font-size: clamp(38px, 4.2vw, 60px); line-height: 1.04">Off the clock</h2>
+<p class="lede">When I'm not working, you'll usually find me on a trail with my dog, Tony Montana, or cooking for the people I love.</p>
+</div>
+<div class="photos">
+<sc-for list="{{postcards}}" as="pc" hint-placeholder-count="3">
+<button type="button" class="{{pc.cls}}" onClick="{{pc.flip}}" aria-pressed="{{pc.pressed}}" aria-label="{{pc.aria}}">
+<span class="pc-inner">
+<span class="pc-face pc-front"><img src="{{pc.src}}" alt="{{pc.alt}}" style="object-position: {{pc.pos}}"><span class="pc-hint pixel">Flip ↻</span></span>
+<span class="pc-face pc-back">
+<span class="pc-msg">{{pc.cap}}</span>
+<span class="pc-side"><span class="pc-stamp"><span class="pixel">MR</span></span><span class="pc-mark pixel">{{pc.date}}</span><span class="pc-line"></span><span class="pc-line"></span><span class="pc-line"></span></span>
+</span>
+</span>
+</button>
+</sc-for>
+</div>
+<div class="about-grid">
+<section class="glass sec" aria-labelledby="ab-1">
+<p class="k mono" id="ab-1"><i aria-hidden="true"></i>Things I love to do</p>
+<div class="chips">
+<span class="tag cat-topic big">Spending time with my dog, Tony Montana</span>
+<span class="tag cat-method big">Spending time with friends and family</span>
+<span class="tag cat-method big">Cooking for the people I love</span>
+<span class="tag cat-tools big">Writing</span>
+<span class="tag cat-tools big">Reading</span>
+<span class="tag cat-strengths big">Training MMA</span>
+<span class="tag cat-strengths big">Playing soccer</span>
+<span class="tag cat-strengths big">Lifting weights</span>
+<span class="tag cat-topic big">Building things</span>
+</div>
+</section>
+<section class="glass sec" aria-labelledby="ab-2">
+<p class="k mono" id="ab-2"><i aria-hidden="true"></i>Bucket list</p>
+<ul class="blist">
+<li>Backpack the full Tour du Mont Blanc</li>
+<li>Wander the markets of Marrakesh, Morocco</li>
+<li>Visit my family's ancestral region of Campania, Italy</li>
+<li class="done"><span class="sr">Done: </span>Hike Angels Landing</li>
+</ul>
+</section>
+<section class="glass sec" aria-labelledby="ab-3">
+<p class="k mono" id="ab-3"><i aria-hidden="true"></i>Recent favorites</p>
+<div class="fav"><span class="mono">Book</span><span class="display">Say Nothing</span></div>
+<div class="fav"><span class="mono">Movie</span><span class="display">La Bola Negra</span></div>
+<div class="fav"><span class="mono">Views</span><span class="display">Western North Carolina</span></div>
+</section>
+</div>
+</div>
+</main>
+</sc-if>
+
+<footer class="footer">
+<div class="bar chrome">
+<p class="mono" style="margin: 0">© Madelyn Rega</p>
+<button type="button" class="btn btn-ink" onClick="{{toTop}}">Back to top ↑</button>
+</div>
+</footer>
+
+<sc-if value="{{modalOpen}}" hint-placeholder-val="{{ false }}">
+<div class="overlay">
+<button type="button" class="scrim" aria-label="Close preview" onClick="{{close}}"></button>
+<div class="camera" role="dialog" aria-modal="true" aria-labelledby="snap-title" onKeyDown="{{onDialogKey}}">
+<img class="camera-img" src="/_blob/e6a0923e9b7197aadfce8e89da52b185" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none">
+<button type="button" class="close-btn btn btn-ink mono" ref="{{closeRef}}" onClick="{{close}}" style="min-height: 38px; padding: 0 16px; font-size: 12px">Close · Esc</button>
+<div class="screen">
+<p class="mono" style="margin: 0; color: #5b6070">{{pv.crumb}}</p>
+<h3 id="snap-title" class="display" style="margin: 0; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.12">{{pv.title}}</h3>
+<p class="mono" style="margin: 0; color: #5b6070; font-size: 11px">{{pv.meta}}</p>
+<sc-if value="{{pv.hasMedia}}" hint-placeholder-val="{{ false }}">
+<div class="thumb">
+<div class="frame"><img src="{{pv.img}}" alt="" style="object-fit: {{pv.fit}}"></div>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #2c303b">{{pv.summary}}</p>
+</div>
+</sc-if>
+<sc-if value="{{pv.noMedia}}" hint-placeholder-val="{{ true }}">
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #2c303b">{{pv.summary}}</p>
+</sc-if>
+<div><button type="button" class="btn btn-ink" onClick="{{pv.open}}">Open the full page →</button></div>
+<div class="chips">
+<sc-for list="{{pv.tags}}" as="t" hint-placeholder-count="5"><button type="button" class="{{t.cls}}" onClick="{{t.go}}">{{t.name}}</button></sc-for>
+</div>
+<p class="mono" style="margin: 6px 0 0; color: #5b6070">Related work</p>
+<sc-for list="{{pv.related}}" as="c" hint-placeholder-count="3">
+<button type="button" class="rel" onClick="{{c.go}}"><b>{{c.title}}</b><span class="mono" style="color: #5b6070; font-size: 11px; white-space: nowrap">{{c.setting}} →</span></button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D7FF3F","options":["#D7FF3F","#BFE3FF","#FF9EDB","#C9B8FF"]},"dimOthers":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":2160}}'>
+const SITE = {"themes":[{"name":"Behavioral & mental health","cat":"Topic","desc":"Behavioral health, ABA, digital mental health, crisis response and suicide prevention"},{"name":"Health equity & SDOH","cat":"Topic","desc":"Health equity, social determinants of health and public health"},{"name":"Assistive tech & AAC","cat":"Topic","desc":"Assistive technology and augmentative & alternative communication (AAC) devices"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic","desc":"Disability, neurodiverse care and inclusive design"},{"name":"Youth & development","cat":"Topic","desc":"Youth wellbeing, child and adolescent development, child welfare"},{"name":"Online safety & misinformation","cat":"Topic","desc":"Youth social-media harms, hate speech, disinformation"},{"name":"Responsible AI & policy","cat":"Topic","desc":"Algorithmic accountability, ethics in technology, privacy, compliance and tech policy"},{"name":"Applied AI","cat":"Topic","desc":"Building with and evaluating AI and machine learning"},{"name":"Healthcare technology","cat":"Topic","desc":"Clinical software, EMR/SaaS products, clinical documentation and health data infrastructure"},{"name":"Global & cross-cultural work","cat":"Topic","desc":"Global development, food security, immigration, culture and identity"},{"name":"Psychology & cognition","cat":"Topic","desc":"Cognitive, social, personality and developmental psychology"},{"name":"Qualitative methods","cat":"Method","desc":"Interviews, focus groups, ethnography, contextual inquiry, observation, thematic coding"},{"name":"Quantitative methods & modeling","cat":"Method","desc":"Statistics, regression and predictive modeling, experimental design, surveys"},{"name":"Research design, writing & ethics","cat":"Method","desc":"Literature review, research critique, IRB and research ethics, academic writing"},{"name":"Human factors & usability","cat":"Method","desc":"Human factors, task analysis, usability, accessibility, pilot and acceptance testing"},{"name":"UX & interaction design","cat":"Method","desc":"UI design, prototyping, personas, information architecture, design specs (Figma)"},{"name":"Product management","cat":"Method","desc":"Requirements, user stories, roadmaps, backlog triage, QA, competitive analysis"},{"name":"Data science & visualization","cat":"Method","desc":"Data cleaning and integration, dashboards, Tableau, Excel"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills","desc":"Python, R and SQL"},{"name":"Web & AI prototyping","cat":"Tools & skills","desc":"React, HTML and AI-assisted building (Claude Code)"},{"name":"Bilingual Spanish–English","cat":"Tools & skills","desc":"Professional working proficiency in Spanish"},{"name":"Ethics & critical thinking","cat":"Strengths","desc":"Ethical judgment and critical analysis"},{"name":"Advocacy & empathy","cat":"Strengths","desc":"Advocacy, empathy and cultural humility"},{"name":"Systems thinking","cat":"Strengths","desc":"Systems thinking, prioritization and attention to detail"},{"name":"Collaboration & leadership","cat":"Strengths","desc":"Collaboration, leadership, facilitation and teaching"},{"name":"Communication","cat":"Strengths","desc":"Stakeholder, plain-language and technical communication"}],"nodes":[{"id":"S1","rank":1,"title":"Predictive Analytics: Social Determinants of Health & Suicide Outcomes","setting":"School","type":"Research project","summary":"Built count-regression models on public CDC and Census data to show how poverty, race, sex, age and disability interact in suicide deaths across 10 Southeastern states.","org":"DH 5160 Analytics and AI for Health Strategies, Iowa State University","role":"Graduate Researcher","dates":"Fall 2025","metrics":["10 states","3 public datasets","IRR 1.121 (p < .001)","ΔAIC ≈ −103,000"],"secs":[{"k":"Question","b":"How do socioeconomic and demographic factors (poverty, race, sex, age group, disability) interact to influence suicide deaths across 10 Southeastern U.S. states?"},{"k":"Methods","b":"Merged and cleaned three public datasets (CDC WONDER mortality, CDC Disability and Health Data System, Census SAIPE poverty) by state and year in Python (pandas) and R (tidyverse). Began with OLS regression (R² = 0.679) and diagnosed severe multicollinearity; moved to Poisson, found overdispersion (deviance/df = 2.62), and fit a negative binomial model (MASS glm.nb) with a population offset and three interaction terms. Designed a Tableau dashboard (choropleth, scatter, bar) for state public-health officials. Ran in parallel with an ethnographic study (S6), whose findings added the poverty dataset."},{"k":"Findings","b":"The interaction model improved fit by about 103,000 AIC points over the main-effects model. Age × sex and race × poverty interactions were highly significant (p < .001): for White residents, each 1 SD rise in state poverty was associated with a 12.1% higher suicide death rate (IRR = 1.121). Disability × poverty was not significant (IRR = 0.9998)."}],"tags":[{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Applied AI","cat":"Topic"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Data science & visualization","cat":"Method"},{"name":"Qualitative methods","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"},{"name":"Systems thinking","cat":"Strengths"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"SDOH & suicide prediction","featured":true},{"id":"S6","rank":2,"title":"Ethnography of Crisis Response: Barriers to Mental Healthcare in the Southeast","setting":"School","type":"Research project","summary":"Observed and coded an expert panel on the 988 Suicide & Crisis Lifeline to uncover the barriers to care that statistics miss.","org":"HCI 5260 Design Ethnography, Iowa State University","role":"Graduate Researcher","dates":"Fall 2025","metrics":["9 panelists observed","9 codes","5 new predictor variables"],"secs":[{"k":"Question","b":"What human, cultural and logistical factors affect access to mental healthcare in the Southeastern U.S., and how can communities be supported to prevent suicide?"},{"k":"Methods","b":"Contextual inquiry: passive observation of a nine-member SAMHSA expert panel (federal and state officials, first responders, peer specialists) on the 988 Lifeline. Took fieldnotes, built a codebook (including an observer-positionality code for reflexivity) and coded inductively by theme, then compared findings with the parallel quantitative model (S1)."},{"k":"Findings","b":"Most frequent codes: continuum of care (17), new predictor variables (14), at-risk communities (13), systemic barriers (12). Surfaced predictors missing from the model (language isolation, LGBTQIA status, veteran status, farming-related economic instability, fear of police response) and turned them into design requirements for a public-health dashboard: co-responder mapping, continuum-of-care metrics and mobile service areas."}],"tags":[{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"988 crisis ethnography","featured":true},{"id":"S4","rank":3,"title":"Emotive Integration Capability (EIC) for AAC Devices","setting":"School","type":"Research project","summary":"Co-authored a research proposal to give AAC users tone and emotion in synthesized speech, using a hybrid neural/statistical speech model and a full evaluation plan.","org":"IE 5770 Human Factors, Iowa State University","role":"Co-Author & Graduate Researcher","dates":"Fall 2024","metrics":["7 fundamental emotions","14 intermediate tones","20 advanced (14 tones + 6 nuances such as sarcasm and humor)","42-rater listener study design","30+ user pre/post study design"],"secs":[{"k":"Question","b":"AAC devices speak in a flat, monotone voice, so millions of users cannot express emotion, tone or nuance. How can speech-generating devices add emotive prosody, and would that improve users' autonomy, social engagement and behavior?"},{"k":"Methods","b":"Reviewed literature on AAC outcomes, Functional Communication Training and speech synthesis (unit selection, statistical parametric synthesis, deep neural networks), and selected a hybrid DNN–SPSS framework (Prosody-TTS) for its low data needs. Designed tiered emotion libraries (Fundamental, Intermediate, Advanced; based on Plutchik), a TOME-method use case, a hierarchical task analysis and a UI mockup. Specified data needs (about 56, 112 and 160 hours of transcribed audio per tier), a two-coder agreement protocol for labeling training audio, a listener experiment powered with G*Power (42 ratings per clip; chi-square goodness-of-fit and binomial tests), and a pre/post quasi-experiment with 30+ AAC users rated by two or more clinicians across four domains and analyzed with paired t-tests, plus caregiver and user feedback surveys."},{"k":"Findings","b":"A complete research proposal for the Emotive Integration Capability, with its constraints stated (no standard taxonomy for secondary emotions, English-only scope, no individual voice timbre) and an integration path through an open-source AAC platform."}],"tags":[{"name":"Assistive tech & AAC","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Psychology & cognition","cat":"Topic"},{"name":"Applied AI","cat":"Topic"},{"name":"Human factors & usability","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Qualitative methods","cat":"Method"},{"name":"Communication","cat":"Strengths"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[{"src":"/_blob/de35aaf90d46eb37516d71e384064c62","cap":"Figure 1. Libraries of emotive tones for AAC: Fundamental, Intermediate and Advanced tiers, with a nuance set (sarcasm, humor, uncertainty and more).","fit":"contain"}],"group":"School","sub":"Research & projects","short":"Emotive AAC (EIC)","featured":true},{"id":"S2","rank":4,"title":"Digital Defender: Gamified Youth Online Safety","setting":"School","type":"Research project","summary":"Researched youth social media harms and prototyped a space-themed game that teaches teens to spot hate speech and misinformation.","org":"YTH 5700P Contemporary Youth Issues & HCI 5840 Python Application Development, Iowa State University","role":"Graduate Researcher (Group 4)","dates":"Summer 2025","metrics":[],"secs":[{"k":"Question","b":"How does algorithmic amplification expose adolescents to disinformation, cyberbullying and hate speech, and how can they learn to recognize online manipulation?"},{"k":"Methods","b":"Investigated developmental harms of youth social media use; designed and prototyped a gamified educational app in Python, with Figma wireframes and prototypes (missions such as Melt Hate Speech, Mix Up Misinformation and Send Bullies to Saturn; Learn the Lingo term cards; quizzes and points)."},{"k":"Findings","b":"A working prototype that trains adolescents to identify online manipulation and harmful propaganda."}],"tags":[{"name":"Youth & development","cat":"Topic"},{"name":"Online safety & misinformation","cat":"Topic"},{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"},{"name":"Collaboration & leadership","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"Digital Defender","featured":true},{"id":"S8","rank":5,"title":"Product Evaluation: nH Predict (Algorithmic Accountability in Healthcare)","setting":"School","type":"Research project","summary":"Critical evaluation of an insurer's machine-learning tool for post-acute care decisions, and how its use should be redesigned.","org":"HCI 5300X Perspectives in HCI, Iowa State University","role":"Graduate student","dates":"Spring 2025","metrics":[],"secs":[{"k":"Question","b":"What happens when a predictive algorithm drives post-acute care and claims decisions, and how should its design and governance change?"},{"k":"Methods","b":"Analyzed nH Predict through techno-centric, human-centric and collective-intelligence perspectives at micro, meso and macro levels, drawing on investigative reporting, litigation and company claims."},{"k":"Findings","b":"Recommended explainable AI, a protected clinician-override workflow, multidisciplinary review of AI recommendations, clinician training, and regulatory transparency and monitoring requirements."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Applied AI","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"nH Predict audit","featured":true},{"id":"S7","rank":6,"title":"How Behavior Technicians Use ABA Data Collection Apps (Interview Study)","setting":"School","type":"Research project","summary":"Interviewed behavior technicians and a BCBA about how data-collection apps fit into real therapy sessions.","org":"HCI 5230X Qualitative Research Methods in HCI, Iowa State University","role":"Graduate Researcher","dates":"Spring 2025","metrics":["6 interviews","9 coded subcategories"],"secs":[{"k":"Question","b":"How do behavior technicians and analysts experience and integrate data collection apps during ABA sessions, and what would make these tools better?"},{"k":"Methods","b":"Literature review on data collection integrity in ABA; scoped research plan and interview guide; six semi-structured interviews (5 RBTs, 1 BCBA; Teams and in person, 30–45 min, recorded with consent); transcribed, coded inductively and organized into a codebook of categories and subcategories, with reflexivity notes on insider bias."},{"k":"Findings","b":"Most technicians use a hybrid of paper and app. Key barriers: clients reacting to devices, battery and offline failures, no undo, hard-to-find notes. Experienced technicians want visibility into progress trends and the treatment plan. Recommended free-text notes, offline mode, company devices, and BT–BCBA change logs and progress visualizations."}],"tags":[{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Healthcare technology","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Communication","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"ABA data-app interviews","featured":true},{"id":"W1","rank":7,"title":"Product Owner, healthcare EMR software","setting":"Work","type":"Role","summary":"Leads product strategy and requirements for healthcare EMR software.","org":"Healthcare EMR software","role":"Product Owner; interim Product Designer","dates":"Feb 2025 – present","metrics":[],"secs":[{"k":"Problem","b":"A growing EMR platform needed clear priorities and requirements that balance user needs, compliance and business goals."},{"k":"Process","b":"Stakeholder discovery, user surveys, competitive analysis, requirements writing, backlog prioritization, pilot testing and AI-assisted prototyping. Interim Product Designer: wireframes, interaction maps and design specs."},{"k":"Result","b":"Steady, well-documented releases, and the product case studies in this portfolio."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Applied AI","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"Human factors & usability","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Web & AI prototyping","cat":"Tools & skills"},{"name":"Communication","cat":"Strengths"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Roles","short":"EMR product owner","featured":true},{"id":"P10","rank":8,"title":"AI-assisted product owner workspace","setting":"Work","type":"Product initiative","summary":"A private, read-only local app that brings a product owner's daily review into one view.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Daily status review meant checking several tools by hand."},{"k":"Process","b":"Spec and decisions log; privacy-first design (read-only access, encrypted credentials, outside text treated as data); unit, accessibility, keyboard and performance testing."},{"k":"Result","b":"A working, documented local tool."}],"tags":[{"name":"Applied AI","cat":"Topic"},{"name":"Responsible AI & policy","cat":"Topic"},{"name":"UX & interaction design","cat":"Method"},{"name":"Human factors & usability","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"Web & AI prototyping","cat":"Tools & skills"},{"name":"Ethics & critical thinking","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"AI PO workspace","featured":true},{"id":"W3","rank":9,"title":"Behavior Therapist (RBT) / Clinical Data Specialist","setting":"Work","type":"Role","summary":"Taught nonvocal children with autism to communicate with AAC devices, and tracked outcomes with longitudinal behavioral data.","org":"Marcus Autism Center & other ABA providers","role":"Registered Behavior Technician; Clinical Data Specialist","dates":"2022 – 2024","metrics":["0–5 words to fluent sentences","83% reduction in challenging behaviors"],"secs":[{"k":"Problem","b":"Nonvocal children with autism needed functional, independent communication, and challenging behaviors needed data-driven intervention."},{"k":"Process","b":"Taught communication with speech-generating devices, AAC systems, PECS and adaptive switches; collected and analyzed high-frequency longitudinal behavioral data under clinical standards; delivered in-home therapy in Spanish and English for underserved families."},{"k":"Result","b":"Clients went from 0–5 vocal words to fluent sentence communication; 83% reduction in challenging behaviors across a multi-client caseload."}],"tags":[{"name":"Assistive tech & AAC","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Bilingual Spanish–English","cat":"Tools & skills"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"Work","sub":"Roles","short":"Marcus Autism Center","featured":true},{"id":"S5","rank":10,"title":"Pantry Partner: Cross-Cultural Food Security Platform (UN SDG 2)","setting":"School","type":"Research project","summary":"A values-driven, co-designed app that helps people in Iowa and Windhoek, Namibia find nearby food resources with dignity, and helps pantries manage inventory.","org":"HCI 5300X Perspectives in HCI, Iowa State University & Namibia University of Science and Technology","role":"Graduate Design Researcher (Group 4)","dates":"Spring 2025","metrics":["2 personas","4 value levels with usage metrics","21-slide pitch"],"secs":[{"k":"Question","b":"Accessing free food (pantries, community meals) is hard because information is fragmented, outdated or inaccessible, and existing tools put institutional needs ahead of the dignity and trust of the people they serve. How can a location-based tool provide food resources while prioritizing dignity and accessibility?"},{"k":"Methods","b":"With an international team (Iowa State and Namibia University of Science and Technology): a values workshop mapped to UN SDGs and a team vote; user interviews plus food-insecurity and volunteer surveys; competitive analysis; personas (a new mother in Windhoek; a recently laid-off user with cerebral palsy); a values table with metrics at micro, meso and macro levels; information architecture and a prioritized roadmap; a Figma prototype; and feedback sessions, including a senior product designer."},{"k":"Findings","b":"A working Figma prototype with delivery requests for users facing disability or transport barriers, community groups, real-time notifications, and inventory scanning for pantry partners. Feedback praised donation scanning and volunteer tracking and suggested expiry alerts and earlier login. The retrospective named next steps: more iterations, full usability testing, more accessibility features, and checks on data freshness and translation accuracy."}],"tags":[{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Human factors & usability","cat":"Method"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[{"src":"/_blob/093e5072300e10f4714e4fba11254805","cap":"Pantry Partner: connecting people experiencing food insecurity with communal food resources.","fit":"cover"},{"src":"/_blob/bdee9784ddd764c3b099dff6db452aa3","cap":"Prototype screens: home feed, pantry map and partner inventory.","fit":"contain"},{"src":"/_blob/73edb27a210c538cc6eec29310613a1e","cap":"Key features for people seeking food: delivery requests, community groups, timely notifications.","fit":"contain"},{"src":"/_blob/fb21e8c6a4bfe2ae4bd72ce064feaa9d","cap":"Key features for pantry partners: inventory scanning and outreach to the community.","fit":"contain"},{"src":"/_blob/f5c3250a4a03cad0506d0b2f0a578da3","cap":"Values table: what each value means and how it is measured at the micro, meso and macro levels.","fit":"contain"}],"group":"School","sub":"Research & projects","short":"Pantry Partner","featured":true},{"id":"P16","rank":11,"title":"Data visualization and graphing","setting":"Work","type":"Product initiative","summary":"Led requirements for the platform's data visualization and graphing features.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Users needed clear, standards-based charts to track progress and make decisions from their data."},{"k":"Process","b":"Requirements synthesis from stakeholder sessions, research into visualization best practices, competitive benchmarking, design review and acceptance criteria."},{"k":"Result","b":"A prioritized graphing roadmap and specs for core and advanced chart features."}],"tags":[{"name":"Applied AI","cat":"Topic"},{"name":"Data science & visualization","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Systems thinking","cat":"Strengths"},{"name":"Communication","cat":"Strengths"},{"name":"Collaboration & leadership","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Data visualization","featured":false},{"id":"S3","rank":12,"title":"Public Health Data Visualization & Policy Dissemination","setting":"School","type":"Research project","summary":"Analyzed public health datasets in R and Python and turned the findings into accessible visual narratives.","org":"Iowa State University","role":"Graduate Researcher","dates":"","metrics":[],"secs":[{"k":"Question","b":"How can complex public health data be made clear enough to explain health disparities and support evidence-based policy?"},{"k":"Methods","b":"Analyzed and visualized complex public health datasets in R and Python."},{"k":"Findings","b":"Accessible visual narratives that demystify health disparities and support evidence-based public policy."}],"tags":[{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Data science & visualization","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"},{"name":"Communication","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"Public health data viz","featured":false},{"id":"E1","rank":13,"title":"Master of Human-Computer Interaction","setting":"School","type":"Degree","summary":"Distance MHCI at Iowa State University, focused on assistive tech, digital mental health, SDOH analytics, youth and social media, and AI in healthcare.","org":"Iowa State University","role":"Graduate student","dates":"Summer 2024 – Dec 2025","metrics":[],"secs":[{"k":"Covers","b":"Focus: assistive language technology; access to digital mental health and crisis-response resources; predictive analytics and SDOH; youth development and social media; decision-making AI in healthcare."},{"k":"Practiced","b":"Coursework: Analytics and AI for Health; Python Application Development; Computational Implementation; Human Factors Engineering; Design and Ethics; Design Ethnography; Qualitative Research Methods; Contemporary Youth Issues; Perspectives in HCI; Visual Design of HCI."},{"k":"Outcome","b":"Degree conferred December 2025."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Human factors & usability","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"}],"media":[],"group":"School","sub":"Degrees & credentials","short":"MHCI degree","featured":false},{"id":"P1","rank":14,"title":"Structured document export","setting":"Work","type":"Product initiative","summary":"Defined and sequenced a document export feature from discovery to MVP.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Users assembled required documents outside the product from scattered sources."},{"k":"Process","b":"Stakeholder discovery, requirements and spec writing, data source mapping, dependency mapping and MVP scoping."},{"k":"Result","b":"A shared roadmap and an MVP that shipped."}],"tags":[{"name":"Applied AI","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"Data science & visualization","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Web & AI prototyping","cat":"Tools & skills"},{"name":"Communication","cat":"Strengths"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Document export","featured":false},{"id":"S9","rank":15,"title":"Pioneers of Assistive Communication Technologies","setting":"School","type":"Writing / case study","summary":"A case study of PRC-Saltillo's assistive communication devices and how user-centered design gives nonvocal people a voice.","org":"","role":"Author","dates":"","metrics":[],"secs":[{"k":"Question","b":"How have assistive communication technologies evolved, and what makes their design user-centered?"},{"k":"Methods","b":"Traced PRC-Saltillo's history from a 1966 repurposed-teletype device through portable, head-pointer and touch-screen devices to the LAMP and Unity language systems; evaluated their design against four user-centered design elements (visibility, accessibility, legibility, language), drawing on company history, user testimonials and inclusive-design literature, and on my own experience teaching children to use speech-generating devices."},{"k":"Findings","b":"Concluded that PRC-Saltillo sets a standard for user-centered assistive design, and posed open questions for the next generation of AAC: expressing tone and nuance, moving beyond wants and demands, and learning vocabulary as curiosity leads."}],"tags":[{"name":"Assistive tech & AAC","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Research & projects","short":"Pioneers of AAC essay","featured":false},{"id":"P3","rank":16,"title":"Data validity and visibility","setting":"Work","type":"Product initiative","summary":"Made record validity visible at a glance and closed validation gaps.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Users could not easily tell whether their records were complete and valid."},{"k":"Process","b":"Design specs translated into user stories with acceptance criteria, defect scoping and staged release communications."},{"k":"Result","b":"Clearer status at a glance, with validation gaps tracked to closure."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Product management","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Data validity","featured":false},{"id":"W2","rank":17,"title":"Strategy & Operations Analyst, Applied ABC","setting":"Work","type":"Role","summary":"Built the data infrastructure and workflows behind clinical school consultation teams.","org":"Applied ABC","role":"Strategy & Operations Analyst; Case Manager","dates":"May 2024 – Feb 2025","metrics":["11 new institutional partnerships"],"secs":[{"k":"Problem","b":"Clinical school consultation teams lacked a unified source of client data, and operational bottlenecks slowed case resolution and family access to services."},{"k":"Process","b":"Designed and implemented a centralized client management database with automated task workflows; ran structured user interviews and UAT to turn stakeholder needs into engineering requirements; built research-informed outreach strategies. As Case Manager (May – Jun 2024), restructured cross-departmental case resolution pipelines."},{"k":"Result","b":"11 new institutional partnerships, evaluated through quarterly reviews; faster case resolution and better family access to behavioral services."}],"tags":[{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Healthcare technology","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Human factors & usability","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"Communication","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Roles","short":"Strategy & ops analyst","featured":false},{"id":"S10","rank":18,"title":"NHANES Data Wrangling & Exploratory Analysis: Sedentary Time and BMI","setting":"School","type":"Analysis exercise","summary":"Pulled CDC NHANES 2017–18 survey data into Python, merged and cleaned it, engineered new variables, and explored how sedentary time relates to BMI.","org":"DH 5160 Analytics and AI for Health Strategies, Iowa State University","role":"Student","dates":"Fall 2025","metrics":["3 CDC datasets merged","4 engineered variables","mean sedentary time 358 min/day"],"secs":[{"k":"Question","b":"How does daily sedentary time relate to body mass index among U.S. survey participants?"},{"k":"Methods","b":"Downloaded three NHANES 2017–18 files from the CDC (demographics, physical activity, body measures) and loaded the SAS transport files with pandas; merged on participant ID; selected and renamed variables, checked missingness and dropped incomplete records; recoded gender; engineered age groups, a four-level sedentary-time variable (from PAD680), activity levels and CDC BMI categories with pd.cut; computed grouped means and NumPy summary statistics; and visualized distributions with Matplotlib and Seaborn box plots and histograms."},{"k":"Findings","b":"Mean sedentary time was 358 minutes a day (median 300). Box plots showed median BMI rising slightly from the low to the very-high sedentary group, suggesting a positive association between sedentary time and BMI (descriptive only, not tested statistically)."}],"tags":[{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Data science & visualization","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"},{"name":"Systems thinking","cat":"Strengths"}],"media":[{"src":"/_blob/259c325e6e294107c20d134b4b56faec","cap":"BMI distribution by daily sedentary level, NHANES 2017–18 (descriptive).","fit":"contain"}],"group":"School","sub":"Research & projects","short":"NHANES analysis","featured":false},{"id":"V1","rank":19,"title":"Court-Appointed Special Advocate (CASA)","setting":"Volunteer","type":"Service","summary":"Advocates in court for siblings in foster care.","org":"Fulton County CASA","role":"Court-Appointed Special Advocate","dates":"present","metrics":[],"secs":[{"k":"Need","b":"Children in foster care need a consistent advocate who represents their best interests in court."},{"k":"Contribution","b":"Home visits, communication across the people involved in the case, court documentation, and evidence-based care recommendations."}],"tags":[{"name":"Youth & development","cat":"Topic"},{"name":"Communication","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"Volunteer","sub":"Service & advocacy","short":"CASA advocate","featured":false},{"id":"V2","rank":20,"title":"Assistive Play Therapy Volunteer, Lekotek","setting":"Volunteer","type":"Service","summary":"Facilitated adapted learning technology and inclusive play for children with disabilities.","org":"Lekotek","role":"Assistive Play Therapy Volunteer","dates":"","metrics":[],"secs":[{"k":"Need","b":"Children with disabilities need inclusive play and learning that is adapted to how they engage."},{"k":"Contribution","b":"Facilitated adapted learning technology sessions and inclusive play therapy."}],"tags":[{"name":"Assistive tech & AAC","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Youth & development","cat":"Topic"},{"name":"Collaboration & leadership","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"Volunteer","sub":"Service & advocacy","short":"Lekotek play therapy","featured":false},{"id":"V3","rank":21,"title":"Bilingual Logistics & Asylum Coordinator, Team Libertad","setting":"Volunteer","type":"Service","summary":"Translated and coordinated travel for asylum-seekers navigating U.S. immigration.","org":"Team Libertad","role":"Bilingual Logistics & Asylum Coordinator","dates":"","metrics":[],"secs":[{"k":"Need","b":"Asylum-seekers navigating U.S. immigration processes face language barriers and complex travel logistics."},{"k":"Contribution","b":"Provided Spanish–English translation and coordinated travel logistics."}],"tags":[{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Bilingual Spanish–English","cat":"Tools & skills"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Volunteer","sub":"Service & advocacy","short":"Team Libertad","featured":false},{"id":"C2","rank":22,"title":"HCI 5260 Design Ethnography","setting":"School","type":"Course","summary":"Hands-on graduate course in ethnographic methods for design and HCI (cross-listed with Anthropology).","org":"Iowa State University (MHCI)","role":"Student","dates":"Fall 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: ethnographic methods applied to design, HCI and user research."},{"k":"Practiced","b":"Practiced: using ethnography to conceptualize, design, build and evaluate interactive systems."},{"k":"Outcome","b":"Produced: ethnography of crisis response and barriers to care (S6)."}],"tags":[{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Qualitative methods","cat":"Method"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Design Ethnography","featured":false},{"id":"C1","rank":23,"title":"HCI 5230X Qualitative Research Methods in HCI","setting":"School","type":"Course","summary":"Graduate course in qualitative methods for HCI and UX research.","org":"Iowa State University (MHCI)","role":"Student","dates":"Spring 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: qualitative research methods specific to HCI and UX research, from academic and industry perspectives."},{"k":"Practiced","b":"Practiced: conducting, writing up and critiquing qualitative research, using focus groups, interviews and surveys."},{"k":"Outcome","b":"Produced: interview study on ABA data collection apps (S7)."}],"tags":[{"name":"Qualitative methods","cat":"Method"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Qualitative Methods","featured":false},{"id":"C10","rank":24,"title":"DH 5160 Analytics and AI for Health Strategies","setting":"School","type":"Course","summary":"Graduate digital health course on data analytics, machine learning and AI for health data.","org":"Iowa State University (Digital Health)","role":"Student","dates":"Fall 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: data analytics in health systems, data mining and visualization, and predictive modeling of health outcomes."},{"k":"Practiced","b":"Practiced: SQL, Power BI or Tableau, R or Python, machine learning and AI applied to health data."},{"k":"Outcome","b":"Produced: the SDOH suicide-outcomes model (S1), plus SQL, Python, R and Tableau mini-projects."}],"tags":[{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Applied AI","cat":"Topic"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Data science & visualization","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Analytics & AI for Health","featured":false},{"id":"C9","rank":25,"title":"YTH 5700P Contemporary Youth Issues: Youth, Families & Technology","setting":"School","type":"Course","summary":"Graduate course on how technology shapes young people and families.","org":"Iowa State University","role":"Student","dates":"Summer 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: technology's intersection with youth and families: identity formation, privacy, race, class, gender, subcultures, risky behavior, policing, education, globalization, health and policy."},{"k":"Practiced","b":"Practiced: developing practical strategies to support youth and families in a technology-heavy society."},{"k":"Outcome","b":"Produced: research behind the Digital Defender game (S2)."}],"tags":[{"name":"Youth & development","cat":"Topic"},{"name":"Online safety & misinformation","cat":"Topic"},{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Youth, Families & Tech","featured":false},{"id":"C8","rank":26,"title":"IE 5770 Human Factors","setting":"School","type":"Course","summary":"Graduate engineering course on physical and psychological factors in human performance.","org":"Iowa State University (MHCI)","role":"Student","dates":"Fall 2024","metrics":[],"secs":[{"k":"Covers","b":"Covers: physical and psychological factors affecting human performance in systems."},{"k":"Practiced","b":"Practiced: human factors analysis and research proposal writing."},{"k":"Outcome","b":"Produced: the Emotive Integration Capability (EIC) proposal for AAC (S4)."}],"tags":[{"name":"Assistive tech & AAC","cat":"Topic"},{"name":"Psychology & cognition","cat":"Topic"},{"name":"Human factors & usability","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Collaboration & leadership","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Human Factors","featured":false},{"id":"C6","rank":27,"title":"HCI 5890 Design and Ethics","setting":"School","type":"Course","summary":"Graduate course on ethics and decision-making in technology and design.","org":"Iowa State University (MHCI)","role":"Student","dates":"Fall 2024","metrics":[],"secs":[{"k":"Covers","b":"Covers: ethics and decision-making as they relate to technology, design, design research, HCI and the design industry."},{"k":"Practiced","b":"Practiced: ethical analysis of design decisions."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Design & Ethics","featured":false},{"id":"C3","rank":28,"title":"HCI 5300X Perspectives in HCI","setting":"School","type":"Course","summary":"Graduate course on inclusive, humane design and technology's social impact.","org":"Iowa State University (MHCI)","role":"Student","dates":"Spring 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: inclusive and humane design; technology's intersection with race, gender, age and class; technology worldwide; democracy; social engineering and cybersecurity."},{"k":"Practiced","b":"Practiced: critical analysis of technology's social impact; cross-cultural design work."},{"k":"Outcome","b":"Produced: Pantry Partner food security platform (S5) and nH Predict product evaluation (S8)."}],"tags":[{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Perspectives in HCI","featured":false},{"id":"E2","rank":29,"title":"BA in Psychology, Minor in Spanish","setting":"School","type":"Degree","summary":"Psychology at Georgia State University, focused on developmental, maladaptive and intercultural psychology.","org":"Georgia State University","role":"Undergraduate student","dates":"2020 – May 2024","metrics":[],"secs":[{"k":"Covers","b":"Focus: developmental, maladaptive and intercultural psychology, and how lack of access to resources leads to gaps in mental and behavioral health outcomes."},{"k":"Practiced","b":"Coursework: Honors Philosophy of Technology; Advanced Research Design & Data Analysis; Intro to Research Design & Analysis; Honors Psychopathology; Developmental Psychology; Psychology of the Atypical Child; Multicultural Issues in Psychology; Cognitive Psychology; Honors Scientific Perspectives on Global Problems."},{"k":"Outcome","b":"Bachelor of Arts, May 2024; Dean's List."}],"tags":[{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Youth & development","cat":"Topic"},{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Bilingual Spanish–English","cat":"Tools & skills"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Degrees & credentials","short":"BA Psychology, Spanish","featured":false},{"id":"P11","rank":30,"title":"Customer request intake tool","setting":"Work","type":"Product initiative","summary":"Designed an intake form that builds severity and impact into triage of customer requests.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Customer requests arrived inconsistently, without what was needed to prioritize them."},{"k":"Process","b":"Workflow analysis, form and interaction design, and iterative revisions with stakeholders; prototyped in React."},{"k":"Result","b":"A working intake prototype ready for integration."}],"tags":[{"name":"UX & interaction design","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"Web & AI prototyping","cat":"Tools & skills"},{"name":"Communication","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Customer intake tool","featured":false},{"id":"P5","rank":31,"title":"Configurable catalog redesign","setting":"Work","type":"Product initiative","summary":"Took a settings catalog from read-only reference to a configurable tool.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Admins needed to configure a catalog safely without breaking downstream data."},{"k":"Process","b":"Requirements from design mocks, business rules, user flows and test scenarios, delivered in two phases."},{"k":"Result","b":"Phased requirements ready for development."}],"tags":[{"name":"Product management","cat":"Method"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Catalog redesign","featured":false},{"id":"P7","rank":32,"title":"Customer report remediation","setting":"Work","type":"Product initiative","summary":"Turned audit findings on a customer report into one fix plan.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Several defects in a customer-facing report needed a coordinated fix."},{"k":"Process","b":"Defect consolidation, prioritization and iterative layout mockups."},{"k":"Result","b":"One prioritized fix plan and an approved layout direction."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Product management","cat":"Method"},{"name":"UX & interaction design","cat":"Method"},{"name":"Collaboration & leadership","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Report remediation","featured":false},{"id":"P9","rank":33,"title":"Request triage and backlog grooming","setting":"Work","type":"Product initiative","summary":"Triaged a crowded backlog into clear, prioritized stories.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Overlapping and undefined requests made the backlog hard to prioritize."},{"k":"Process","b":"Backlog audit, duplicate analysis, story writing with acceptance criteria and a sequenced grooming plan."},{"k":"Result","b":"A cleaner backlog and a prioritized plan."}],"tags":[{"name":"Product management","cat":"Method"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Backlog triage","featured":false},{"id":"P12","rank":34,"title":"Release and stakeholder communications","setting":"Work","type":"Product initiative","summary":"Plain-language release communications tailored to each audience.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Different audiences needed different information about the same changes."},{"k":"Process","b":"Audience analysis and plain-language writing for announcements, notices and summaries."},{"k":"Result","b":"Clear, accurate communications across releases."}],"tags":[{"name":"Communication","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Release comms","featured":false},{"id":"P14","rank":35,"title":"Platform documentation","setting":"Work","type":"Product initiative","summary":"Turned product knowledge into clear, editable documentation.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"Teams lacked an accurate, shareable overview of the platform."},{"k":"Process","b":"Information architecture, glossary, Q&A and gap analysis."},{"k":"Result","b":"Editable documentation and a follow-up list."}],"tags":[{"name":"Communication","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Platform docs","featured":false},{"id":"P15","rank":36,"title":"Issue pattern tracking","setting":"Work","type":"Product initiative","summary":"Organized scattered reports into a tracker that surfaced a regression.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"User-reported issues were scattered and patterns were hard to see."},{"k":"Process","b":"Data structuring and pattern analysis."},{"k":"Result","b":"A tracker that identified a likely regression."}],"tags":[{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Data science & visualization","cat":"Method"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Issue tracking","featured":false},{"id":"D3","rank":37,"title":"Structured form section mockups","setting":"Work","type":"Design","summary":"Replaced a free-text workaround with structured fields.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"A single free-text field was being used as a workaround."},{"k":"Process","b":"Mockups from the live interface, field constraints, acceptance criteria and QA scenarios."},{"k":"Result","b":"A development-ready story with mockups."}],"tags":[{"name":"UX & interaction design","cat":"Method"},{"name":"Product management","cat":"Method"},{"name":"Systems thinking","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Form section mockups","featured":false},{"id":"D7","rank":38,"title":"Customer workaround guide","setting":"Work","type":"Design","summary":"A step-by-step guide and clarifying questions for a blocked customer workflow.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"A customer was blocked in a workflow."},{"k":"Process","b":"Task analysis, an annotated step-by-step guide and clarifying questions."},{"k":"Result","b":"A guide and a customer-ready follow-up."}],"tags":[{"name":"Communication","cat":"Strengths"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Workaround guide","featured":false},{"id":"D8","rank":39,"title":"Scheduling tool","setting":"Work","type":"Design","summary":"Interface design for a scheduling tool.","org":"Healthcare EMR software","role":"Product Owner","dates":"2025 – 2026","metrics":[],"secs":[{"k":"Problem","b":"[Describe the scheduling challenge, who it affected, and the constraints that shaped the brief.]"},{"k":"Process","b":"[Outline your role, key decisions, and how research and iteration informed the design.]"},{"k":"Result","b":"[Add the delivered solution and supporting evidence.]"}],"tags":[{"name":"UX & interaction design","cat":"Method"}],"media":[],"group":"Work","sub":"Product, design & research case studies","short":"Scheduling tool","featured":false},{"id":"C5","rank":40,"title":"HCI 5840 Python Application Development in HCI","setting":"School","type":"Course","summary":"Graduate course building a large Python project from idea to demonstrable product.","org":"Iowa State University (MHCI)","role":"Student","dates":"Summer 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: the full development cycle: idea, specification, prototyping, implementation, testing and documentation."},{"k":"Practiced","b":"Practiced: writing Python code and design documents for a project of the student's choosing."},{"k":"Outcome","b":"Produced: the Digital Defender youth online safety game (S2)."}],"tags":[{"name":"Online safety & misinformation","cat":"Topic"},{"name":"Youth & development","cat":"Topic"},{"name":"UX & interaction design","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"},{"name":"Communication","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Python App Dev","featured":false},{"id":"C4","rank":41,"title":"HCI 5740 Computational Implementation and Prototyping in HCI","setting":"School","type":"Course","summary":"Graduate introduction to programming in Python for HCI.","org":"Iowa State University (MHCI)","role":"Student","dates":"Spring 2025","metrics":[],"secs":[{"k":"Covers","b":"Covers: fundamentals of software programming and practical Python."},{"k":"Practiced","b":"Practiced: interaction and interface design, information visualization and other computational HCI tools in Python."}],"tags":[{"name":"UX & interaction design","cat":"Method"},{"name":"Data science & visualization","cat":"Method"},{"name":"Programming (Python, R, SQL)","cat":"Tools & skills"}],"media":[],"group":"School","sub":"Coursework","short":"Prototyping in HCI","featured":false},{"id":"C7","rank":42,"title":"HCI 5950 Visual Design of HCI","setting":"School","type":"Course","summary":"Graduate course in visual and interaction design for HCI.","org":"Iowa State University (MHCI)","role":"Student","dates":"Summer 2024","metrics":[],"secs":[{"k":"Covers","b":"Covers: audience analysis, design methods for concepts and solutions, concept prototyping, and visual design fundamentals (color, type, symbolism, grid)."},{"k":"Practiced","b":"Practiced: discussions, tutorials and hands-on design projects."}],"tags":[{"name":"UX & interaction design","cat":"Method"}],"media":[],"group":"School","sub":"Coursework","short":"Visual Design of HCI","featured":false},{"id":"C11","rank":43,"title":"Research Design & Data Analysis sequence (PSYC 3510, 3530)","setting":"School","type":"Coursework","summary":"Two-course methods sequence in which I designed and ran my own psychology study.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2022 – 2023","metrics":[],"secs":[{"k":"Covers","b":"Covers: research design, statistics and scientific communication in psychology."},{"k":"Practiced","b":"Practiced: writing a formal research proposal, applying for IRB approval, experimental design, statistical analysis, independent data collection, and presenting results in APA style."}],"tags":[{"name":"Quantitative methods & modeling","cat":"Method"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Research design & stats","featured":false},{"id":"C13","rank":44,"title":"PSYC 4400 Psychology of the Atypical Child","setting":"School","type":"Course","summary":"Undergraduate course on children with cognitive, physical, learning or emotional difficulties.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"Spring 2023","metrics":[],"secs":[{"k":"Covers","b":"Covers: problems of children with cognitive, physical, learning or emotional difficulties, with emphasis on diagnostic and corrective approaches."},{"k":"Practiced","b":"Practiced: applying developmental and clinical frameworks to children's needs."}],"tags":[{"name":"Youth & development","cat":"Topic"},{"name":"Disability, neurodiversity & inclusion","cat":"Topic"},{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Atypical Child","featured":false},{"id":"C15","rank":45,"title":"Philosophy & ethics of technology (PHIL 3000 Honors, PHIL 2030)","setting":"School","type":"Coursework","summary":"Honors philosophy of technology and introductory ethics.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2020 – 2021","metrics":[],"secs":[{"k":"Covers","b":"Covers: how to define technology, whether it is morally or politically neutral, the ethics of innovation, and major ethical theories."},{"k":"Practiced","b":"Practiced: philosophical argument and writing-intensive critique."}],"tags":[{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Philosophy & ethics","featured":false},{"id":"C14","rank":46,"title":"PSYC 3570 Multicultural Issues in Psychology","setting":"School","type":"Course","summary":"Undergraduate course on human diversity and cultural influences in psychology.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"Spring 2023","metrics":[],"secs":[{"k":"Covers","b":"Covers: psychological topics and issues associated with diversity, from a range of theoretical and methodological perspectives that reflect cultural influences."},{"k":"Practiced","b":"Practiced: analyzing diversity and culture in psychological research."}],"tags":[{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Multicultural Psychology","featured":false},{"id":"C16","rank":47,"title":"Clinical psychology coursework (Honors Psychopathology, Drugs & Behavior)","setting":"School","type":"Coursework","summary":"Coursework on psychological disorders, their treatment, and how drugs affect the brain and behavior.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2022","metrics":[],"secs":[{"k":"Covers","b":"Covers: psychopathology and abnormal psychology; drugs, the nervous system and behavior."},{"k":"Practiced","b":"Practiced: clinical and diagnostic reasoning."}],"tags":[{"name":"Behavioral & mental health","cat":"Topic"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Clinical psychology","featured":false},{"id":"C17","rank":48,"title":"Developmental psychology coursework (Developmental Psychology, Human Development)","setting":"School","type":"Coursework","summary":"Coursework on physical, cognitive and social development across the lifespan.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2022 – 2023","metrics":[],"secs":[{"k":"Covers","b":"Covers: human development from childhood through adulthood."},{"k":"Practiced","b":"Practiced: applying developmental theory."}],"tags":[{"name":"Youth & development","cat":"Topic"}],"media":[],"group":"School","sub":"Coursework","short":"Developmental psychology","featured":false},{"id":"C19","rank":49,"title":"Core psychology coursework (Cognitive, Social, Interpersonal, Personality)","setting":"School","type":"Coursework","summary":"Upper-level coursework on how people think, relate, influence one another and differ.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2023 – 2024","metrics":[],"secs":[{"k":"Covers","b":"Covers: cognition and decision-making; social influence and group behavior; interpersonal relationships; theories of personality."},{"k":"Practiced","b":"Practiced: applying psychological theory to behavior."}],"tags":[{"name":"Psychology & cognition","cat":"Topic"},{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Communication","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"},{"name":"Ethics & critical thinking","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Core psychology","featured":false},{"id":"C24","rank":50,"title":"Global & cultural perspectives (Honors Global Problems, Global Issues, Anthropology)","setting":"School","type":"Coursework","summary":"Interdisciplinary coursework on global problems, international issues and human cultures.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2022 – 2024","metrics":[],"secs":[{"k":"Covers","b":"Covers: scientific approaches to global problems in public health, environment and technology; global political issues; the study of human cultures."}],"tags":[{"name":"Health equity & SDOH","cat":"Topic"},{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Responsible AI & policy","cat":"Topic"},{"name":"Ethics & critical thinking","cat":"Strengths"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Global perspectives","featured":false},{"id":"C26","rank":51,"title":"Spanish minor (language sequence, Hispanic culture & society)","setting":"School","type":"Coursework","summary":"Spanish language and upper-level Hispanic culture coursework, including a writing-intensive course taught in Spanish.","org":"Georgia State University (BA Psychology)","role":"Student","dates":"2020 – 2023","metrics":[],"secs":[{"k":"Covers","b":"Covers: intermediate Spanish; Hispanic culture and society; Spanish culture in transition."},{"k":"Practiced","b":"Practiced: critical writing and discussion in Spanish."}],"tags":[{"name":"Global & cross-cultural work","cat":"Topic"},{"name":"Research design, writing & ethics","cat":"Method"},{"name":"Bilingual Spanish–English","cat":"Tools & skills"},{"name":"Advocacy & empathy","cat":"Strengths"}],"media":[],"group":"School","sub":"Coursework","short":"Spanish minor","featured":false},{"id":"E3","rank":52,"title":"Google UX Design Professional Certificate","setting":"School","type":"Certification","summary":"Professional certificate in UX design (Coursera).","org":"Google / Coursera","role":"","dates":"","metrics":[],"secs":[{"k":"Covers","b":""},{"k":"Practiced","b":""},{"k":"Outcome","b":""}],"tags":[{"name":"UX & interaction design","cat":"Method"}],"media":[],"group":"School","sub":"Degrees & credentials","short":"Google UX certificate","featured":false}],"cloud":{"Behavioral & mental health":{"x":50.0,"y":50.01,"fs":35,"label":"Behavioral & mental health"},"Responsible AI & policy":{"x":50.58,"y":43.3,"fs":35,"label":"Responsible AI & policy"},"S6":{"x":51.7,"y":56.19,"fs":22,"label":"988 crisis ethnography"},"Healthcare technology":{"x":54.75,"y":61.59,"fs":34,"label":"Healthcare technology"},"Applied AI":{"x":46.22,"y":35.16,"fs":33,"label":"Applied AI"},"Disability, neurodiversity & inclusion":{"x":54.56,"y":68.36,"fs":33,"label":"Disability, neurodiversity & inclusion"},"S7":{"x":48.66,"y":29.57,"fs":22,"label":"ABA data-app interviews"},"Health equity & SDOH":{"x":49.51,"y":75.38,"fs":33,"label":"Health equity & SDOH"},"Ethics & critical thinking":{"x":46.59,"y":23.48,"fs":32,"label":"Ethics & critical thinking"},"Advocacy & empathy":{"x":67.62,"y":36.66,"fs":31,"label":"Advocacy & empathy"},"P10":{"x":32.41,"y":59.84,"fs":22,"label":"AI PO workspace"},"Global & cross-cultural work":{"x":21.01,"y":36.38,"fs":31,"label":"Global & cross-cultural work"},"Qualitative methods":{"x":80.95,"y":52.62,"fs":31,"label":"Qualitative methods"},"Research design, writing & ethics":{"x":49.69,"y":81.47,"fs":31,"label":"Research design, writing & ethics"},"W1":{"x":22.61,"y":43.8,"fs":22,"label":"EMR product owner"},"Systems thinking":{"x":47.7,"y":17.36,"fs":31,"label":"Systems thinking"},"Quantitative methods & modeling":{"x":53.57,"y":87.86,"fs":30,"label":"Quantitative methods & modeling"},"Youth & development":{"x":80.13,"y":46.23,"fs":30,"label":"Youth & development"},"S2":{"x":22.46,"y":51.28,"fs":22,"label":"Digital Defender"},"Assistive tech & AAC":{"x":82.07,"y":59.54,"fs":29,"label":"Assistive tech & AAC"},"Communication":{"x":28.02,"y":30.16,"fs":29,"label":"Communication"},"UX & interaction design":{"x":77.97,"y":23.36,"fs":29,"label":"UX & interaction design"},"S4":{"x":72.16,"y":31.53,"fs":22,"label":"Emotive AAC (EIC)"},"Collaboration & leadership":{"x":78.09,"y":75.1,"fs":28,"label":"Collaboration & leadership"},"Product management":{"x":18.97,"y":68.63,"fs":28,"label":"Product management"},"Human factors & usability":{"x":44.61,"y":11.38,"fs":26,"label":"Human factors & usability"},"W3":{"x":14.59,"y":57.68,"fs":22,"label":"Marcus Autism Center"},"Online safety & misinformation":{"x":58.46,"y":93.34,"fs":26,"label":"Online safety & misinformation"},"Psychology & cognition":{"x":21.32,"y":17.05,"fs":26,"label":"Psychology & cognition"},"Programming (Python, R, SQL)":{"x":72.93,"y":8.47,"fs":25,"label":"Programming (Python, R, SQL)"},"S5":{"x":21.01,"y":80.69,"fs":22,"label":"Pantry Partner"},"Data science & visualization":{"x":20.63,"y":90.02,"fs":24,"label":"Data science & visualization"},"Web & AI prototyping":{"x":26.53,"y":75.23,"fs":22,"label":"Web & AI prototyping"},"Bilingual Spanish–English":{"x":13.5,"y":62.17,"fs":21,"label":"Bilingual Spanish–English"},"S1":{"x":80.79,"y":14.14,"fs":22,"label":"SDOH & suicide prediction"},"S8":{"x":89.25,"y":33.62,"fs":22,"label":"nH Predict audit"}}};
+
+const POSTCARDS = [
+  { src: '/_blob/e9fca638a80018a2aeaa2c3e48508972', pos: '50% 72%', alt: 'Madelyn sitting on a bench at a mountain overlook at sunrise, with her black dog Tony Montana in front of her', cap: 'Sunrise hike with Tony Montana', date: 'Jul 2026' },
+  { src: '/_blob/c6ac4ead328525c73a45e4e5d0b11d82', pos: '50% 60%', alt: 'Tony Montana, a black dog, peeking out of tall green grass under a blue sky', cap: 'Tony, mid-hike', date: 'Jul 2026' },
+  { src: '/_blob/f52bbe89e274346f66f28623fa36cd58', pos: '50% 40%', alt: 'Madelyn in a red bandana taking a selfie above a canyon in Zion National Park', cap: 'Zion National Park', date: 'May 2026' }
+];
+const CAT_CLS = { 'Topic': 'topic', 'Method': 'method', 'Tools & skills': 'tools', 'Strengths': 'strengths' };
+const CAT_LABEL = { 'Topic': 'Topics', 'Method': 'Methods', 'Tools & skills': 'Tools & skills', 'Strengths': 'Strengths' };
+const NODE = {}; SITE.nodes.forEach((n) => { NODE[n.id] = n; });
+const THEME = {}; SITE.themes.forEach((t) => { THEME[t.name] = t; });
+const COUNT = {}; SITE.nodes.forEach((n) => n.tags.forEach((t) => { COUNT[t.name] = (COUNT[t.name] || 0) + 1; }));
+const hasTag = (n, name) => n.tags.some((t) => t.name === name);
+const BY_RANK = SITE.nodes.slice().sort((a, b) => a.rank - b.rank);
+
+// recommender: shared themes, rarer themes weigh more
+function related(n, k) {
+  const mine = new Set(n.tags.map((t) => t.name));
+  return SITE.nodes.filter((m) => m.id !== n.id).map((m) => {
+    let s = 0; m.tags.forEach((t) => { if (mine.has(t.name)) s += 1 / Math.log2(1 + COUNT[t.name]); });
+    return { m, s: s - m.rank * 0.002 };
+  }).filter((x) => x.s > 0).sort((a, b) => b.s - a.s).slice(0, k).map((x) => x.m);
+}
+
+function ring(count, rx, ry, offset) {
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    const a = -Math.PI / 2 + offset + (i / count) * Math.PI * 2;
+    out.push({ x: Math.min(91, Math.max(9, 50 + rx * Math.cos(a))), y: Math.min(95, Math.max(5, 50 + ry * Math.sin(a))) });
+  }
+  return out;
+}
+
+function layout(focus, filt) {
+  const showCat = (cat) => filt === 'all' || filt === CAT_CLS[cat];
+  const showFeat = filt === 'all' || filt === 'feat';
+  const pos = {};
+  if (!focus) {
+    SITE.themes.forEach((t) => { const c = SITE.cloud[t.name]; const v = showCat(t.cat); pos['t:' + t.name] = { x: c.x, y: c.y, fs: c.fs, o: v ? 1 : 0, s: v ? 1 : 0.6, on: v }; });
+    SITE.nodes.forEach((n) => {
+      const c = SITE.cloud[n.id];
+      pos['n:' + n.id] = c && showFeat ? { x: c.x, y: c.y, fs: c.fs, o: 1, s: 1, on: true } : c ? { x: c.x, y: c.y, fs: c.fs, o: 0, s: 0.6, on: false } : { x: 50, y: 50, fs: 12, o: 0, s: 0.4, on: false };
+    });
+    return pos;
+  }
+  const conn = BY_RANK.filter((n) => hasTag(n, focus) && (filt !== 'feat' || n.featured));
+  const inner = conn.slice(0, 8), outer = conn.slice(8);
+  const pin = ring(inner.length, 20, 24, 0);
+  const pout = ring(outer.length, 33, 37, outer.length ? Math.PI / outer.length : 0);
+  const co = {};
+  conn.forEach((n) => n.tags.forEach((t) => { if (t.name !== focus) co[t.name] = (co[t.name] || 0) + 1; }));
+  const near = filt === 'feat' ? [] : Object.keys(co).filter((k) => THEME[k] && showCat(THEME[k].cat)).sort((a, b) => co[b] - co[a]).slice(0, 12);
+  const pth = ring(near.length, 45, 44, Math.PI / 24);
+  SITE.themes.forEach((t) => {
+    const c = SITE.cloud[t.name];
+    if (t.name === focus) pos['t:' + t.name] = { x: 50, y: 50, fs: 26, o: 1, s: 1, on: true, center: true };
+    else {
+      const i = near.indexOf(t.name);
+      pos['t:' + t.name] = i >= 0 ? { x: pth[i].x, y: pth[i].y, fs: 15, o: 1, s: 1, on: true } : { x: c.x, y: c.y, fs: c.fs, o: 0, s: 0.6, on: false };
+    }
+  });
+  SITE.nodes.forEach((n) => {
+    const ii = inner.indexOf(n), oi = outer.indexOf(n);
+    if (ii >= 0) pos['n:' + n.id] = { x: pin[ii].x, y: pin[ii].y, fs: 14, o: 1, s: 1, on: true, conn: true };
+    else if (oi >= 0) pos['n:' + n.id] = { x: pout[oi].x, y: pout[oi].y, fs: 13, o: 1, s: 1, on: true, conn: true };
+    else pos['n:' + n.id] = { x: 50, y: 50, fs: 12, o: 0, s: 0.4, on: false };
+  });
+  return pos;
+}
+
+const tagChip = (t, go, kind) => ({ name: t.name, cls: (kind || 'chip') + ' cat-' + CAT_CLS[t.cat], go });
+const cardMeta = (n) => [n.type, n.dates].filter(Boolean).join(' · ');
+
+class Component extends DCLogic {
+  state = { view: 'home', itemId: null, trail: [], open: null, focus: null, filt: 'all', slide: 0, active: 'home', flips: {} };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      if (this.state.view !== 'home') return;
+      const g = document.getElementById('gallery');
+      if (!g) return;
+      const next = g.getBoundingClientRect().top < window.innerHeight * 0.4 ? 'gallery' : 'home';
+      if (next !== this.state.active) this.setState({ active: next });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    if (this.onScroll) window.removeEventListener('scroll', this.onScroll);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.scrollTarget) {
+      const id = this.scrollTarget; this.scrollTarget = null;
+      requestAnimationFrame(() => {
+        const el = id === 'top' ? null : document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); else window.scrollTo({ top: 0, behavior: 'auto' });
+      });
+    }
+    if (this.state.focus !== prevState.focus && this.linesEl) {
+      this.linesEl.classList.remove('draw'); void this.linesEl.getBoundingClientRect(); if (this.state.focus) this.linesEl.classList.add('draw');
+    }
+    if (this.state.open && !prevState.open && this.closeEl) this.closeEl.focus();
+  }
+
+  _go(patch, target) { this.scrollTarget = target || 'top'; this.setState({ open: null, ...patch }); }
+  _here() { return { view: this.state.view, itemId: this.state.itemId }; }
+  _openItem(id) { this._go({ view: 'item', itemId: id, slide: 0, trail: [...this.state.trail, this._here()].slice(-20), active: '' }); }
+  _focusTheme(name) { this._go({ view: 'home', focus: name, active: 'gallery', trail: [] }, 'gallery'); }
+
+  renderVals() {
+    const accent = this.props.accent ?? '#D7FF3F';
+    const dim = this.props.dimOthers ?? true;
+    const st = this.state;
+
+    const navDefs = [
+      { id: 'home', label: 'Home', icon: '/_blob/c053f350fb560241271ddd8e73820777', iconOn: '/_blob/565e95313a25043cf8b311dcb296d1f8', go: () => this._go({ view: 'home', active: 'home', trail: [] }, 'top') },
+      { id: 'gallery', label: 'Gallery', icon: '/_blob/853d68d0f504aaa42cbece17d19b0b17', iconOn: '/_blob/243bb4ccaed6166c9ee09a8f61265cda', go: () => this._go({ view: 'home', active: 'gallery', trail: [] }, 'gallery') },
+      { id: 'experience', label: 'Experience', icon: '/_blob/06d56a12820cd349709e4d5d73bfabcf', iconOn: '/_blob/d1afab27cf8d8cfaad63ce30e851d1b1', go: () => this._go({ view: 'experience', active: 'experience', trail: [] }, 'top') },
+      { id: 'contact', label: 'Contact', icon: '/_blob/0345f076feccba9056e6f154c25b6db3', iconOn: '/_blob/7a9813b3bb3e2ec58986be799d06cabf', go: () => this._go({ view: 'about', active: 'contact', trail: [] }, 'contact') },
+      { id: 'about', label: 'About', icon: '/_blob/3a0d98db0666dc81f810fcdcd25fb7ab', iconOn: '/_blob/1a9cedc94fad486c32d2efc2304fb148', go: () => this._go({ view: 'about', active: 'about', trail: [] }, 'about-me') }
+    ];
+    const nav = navDefs.map((n) => ({ ...n, icon: st.active === n.id ? n.iconOn : n.icon, cls: 'dock-item' + (st.active === n.id ? ' is-active' : ''), current: st.active === n.id ? 'page' : 'false' }));
+
+    // theme map
+    const focus = st.focus && THEME[st.focus] ? st.focus : null;
+    const filt = st.filt || 'all';
+    const pos = layout(focus, filt);
+    const FILTERS = [{ id: 'all', label: 'All' }, { id: 'topic', label: 'Topics', color: 'var(--accent)' }, { id: 'method', label: 'Methods', color: 'linear-gradient(115deg,#ffd9ec,#fff1cf,#d6fbef)' }, { id: 'tools', label: 'Tools & skills', color: '#ffffff' }, { id: 'strengths', label: 'Strengths', color: '#aab1bf' }, { id: 'feat', label: 'Featured work', color: 'var(--accent)' }];
+    const filters = FILTERS.map((f) => ({ label: f.label, dot: !!f.color, color: f.color || '', on: filt === f.id ? 'true' : 'false', cls: 'flt' + (filt === f.id ? ' on' : ''), go: () => this.setState({ filt: f.id }) }));
+    const mapItems = [];
+    SITE.themes.forEach((t, i) => {
+      const p = pos['t:' + t.name];
+      mapItems.push({ key: 't' + i, label: t.name, x: p.x.toFixed(2), y: p.y.toFixed(2), fs: p.fs, o: p.o, s: p.s, d: p.on ? (i % 9) * 25 : 0,
+        cls: 'mi t cat-' + CAT_CLS[t.cat] + (p.center ? ' center chrome-pill' : '') + (p.on ? '' : ' off'), pin: false,
+        tab: p.on ? '0' : '-1', hidden: p.on ? 'false' : 'true',
+        aria: p.center ? t.name + ', selected theme. Select to show everything' : t.name + ', ' + t.cat + ', ' + COUNT[t.name] + ' connected',
+        click: p.center ? () => this.setState({ focus: null }) : () => this.setState({ focus: t.name }) });
+    });
+    const lines = [];
+    SITE.nodes.forEach((n, i) => {
+      const p = pos['n:' + n.id];
+      if (p.conn) lines.push('M50 50L' + p.x.toFixed(2) + ' ' + p.y.toFixed(2));
+      mapItems.push({ key: n.id, label: focus ? n.short : (SITE.cloud[n.id] ? SITE.cloud[n.id].label : n.short), x: p.x.toFixed(2), y: p.y.toFixed(2), fs: p.fs, o: p.o, s: p.s, d: p.on ? 120 + (i % 12) * 22 : 0,
+        cls: 'mi n' + (n.featured ? ' feat' : '') + (p.on ? '' : ' off'), pin: n.featured,
+        tab: p.on ? '0' : '-1', hidden: p.on ? 'false' : 'true',
+        aria: n.title + ', ' + n.setting + ' ' + n.type + '. Opens a preview',
+        click: () => this.setState({ open: n.id }) });
+    });
+    const ft = focus ? THEME[focus] : null;
+    const focusLabel = ft ? CAT_LABEL[ft.cat] + ' · ' + COUNT[focus] + ' connected' : '';
+    const focusTitle = ft ? ft.name : '';
+    const focusDesc = ft ? ft.desc : '';
+
+    // preview (camera)
+    let pv = { crumb: '', title: '', meta: '', summary: '', hasMedia: false, noMedia: true, img: '', fit: 'cover', tags: [], related: [], open: () => {} };
+    const on = st.open && NODE[st.open] ? NODE[st.open] : null;
+    if (on) {
+      const m = on.media[0];
+      pv = { crumb: on.setting + ' · ' + on.type, title: on.title, meta: [on.org, on.dates].filter(Boolean).join(' · '), summary: on.summary,
+        hasMedia: !!m, noMedia: !m, img: m ? m.src : '', fit: m ? (m.fit === 'cover' ? 'cover' : 'contain') : 'cover',
+        tags: on.tags.map((t) => tagChip(t, () => this._focusTheme(t.name))),
+        related: related(on, 3).map((r) => ({ title: r.title, setting: r.setting, go: () => this._openItem(r.id) })),
+        open: () => this._openItem(on.id) };
+    }
+    const close = () => this.setState({ open: null });
+
+    // item page
+    let item = { crumb: '', featured: false, title: '', meta: '', summary: '', metrics: [], hasMetrics: false, hasMedia: false, isCarousel: false, topCls: 'top-row solo', secs: [], tagRows: [], related: [] };
+    let slide = { src: '', cap: '', fit: 'contain' }, dots = [];
+    const it = st.view === 'item' && NODE[st.itemId] ? NODE[st.itemId] : null;
+    if (it) {
+      const nm = it.media.length, si = nm ? ((st.slide % nm) + nm) % nm : 0;
+      if (nm) slide = it.media[si];
+      dots = it.media.map((m, i) => ({ cls: 'dot' + (i === si ? ' on' : ''), on: i === si ? 'true' : 'false', aria: 'Image ' + (i + 1) + ' of ' + nm, go: () => this.setState({ slide: i }) }));
+      const rows = ['Topic', 'Method', 'Tools & skills', 'Strengths'].map((c) => ({ label: CAT_LABEL[c], tags: it.tags.filter((t) => t.cat === c).map((t) => tagChip(t, () => this._focusTheme(t.name))) })).filter((r) => r.tags.length);
+      item = { crumb: it.setting + ' · ' + it.type, featured: it.featured, title: it.title, meta: [it.org, it.role, it.dates].filter(Boolean).join(' · '), summary: it.summary,
+        metrics: it.metrics, hasMetrics: it.metrics.length > 0, hasMedia: nm > 0, isCarousel: nm > 1, topCls: nm ? 'top-row' : 'top-row solo',
+        secs: it.secs, tagRows: rows,
+        related: related(it, 3).map((r) => ({ title: r.title, summary: r.summary, meta: r.setting + ' · ' + r.type, tags: r.tags.slice(0, 3).map((t) => tagChip(t, null, 'tag')), go: () => this._openItem(r.id) })) };
+    }
+    const prev = st.trail[st.trail.length - 1];
+    const backLabel = !prev ? 'Gallery' : prev.view === 'experience' ? 'Experience' : prev.view === 'item' ? 'Back' : prev.view === 'about' ? 'About' : 'Gallery';
+    const goBack = () => {
+      if (!prev || prev.view === 'home') { this._go({ view: 'home', active: 'gallery', trail: [] }, 'gallery'); return; }
+      this._go({ view: prev.view, itemId: prev.itemId, slide: 0, active: prev.view === 'item' ? '' : prev.view, trail: st.trail.slice(0, -1) });
+    };
+
+    // experience
+    const GROUPS = [
+      { name: 'Work', id: 'exp-work', blurb: 'Roles and product case studies', subs: ['Roles', 'Product, design & research case studies'] },
+      { name: 'School', id: 'exp-school', blurb: 'Research, degrees and coursework', subs: ['Research & projects', 'Degrees & credentials', 'Coursework'] },
+      { name: 'Volunteer', id: 'exp-volunteer', blurb: 'Service and advocacy', subs: ['Service & advocacy'] }
+    ];
+    const groups = GROUPS.map((g) => {
+      const subs = g.subs.map((s) => ({ name: s, items: BY_RANK.filter((n) => n.group === g.name && n.sub === s).map((n) => ({
+        title: n.title, summary: n.summary, meta: cardMeta(n), tags: n.tags.slice(0, 3).map((t) => tagChip(t, null, 'tag')), go: () => this._openItem(n.id) })) })).filter((s) => s.items.length);
+      return { ...g, href: '#' + g.id, count: subs.reduce((a, s) => a + s.items.length, 0), subs };
+    });
+
+    return {
+      accent, nav,
+      isHome: st.view === 'home', isItem: !!it, isExperience: st.view === 'experience', isAbout: st.view === 'about',
+      goHome: navDefs[0].go, goGallery: navDefs[1].go, toTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      mapCls: 'map' + (focus ? ' focused' : '') + (dim ? ' dim' : ''), mapItems, linePath: lines.join(' ') || 'M50 50',
+      linesRef: (el) => { this.linesEl = el; },
+      isFocused: !!focus, hasFocusLabel: !!focusLabel, filters, focusLabel, focusTitle, focusDesc, resetMap: () => this.setState({ focus: null }),
+      modalOpen: !!on, pv, close, closeRef: (el) => { this.closeEl = el; },
+      onDialogKey: (e) => { if (e.key === 'Escape') close(); },
+      item, slide, dots, backLabel, goBack,
+      prevSlide: () => this.setState({ slide: st.slide - 1 }), nextSlide: () => this.setState({ slide: st.slide + 1 }),
+      groups,
+      postcards: POSTCARDS.map((p, i) => { const f = !!(st.flips || {})[i]; return { ...p, cls: 'postcard' + (f ? ' flipped' : ''), pressed: f ? 'true' : 'false', aria: p.cap + '. ' + (f ? 'Showing the back. Select to see the photo.' : 'Select to flip the postcard.'), flip: () => this.setState({ flips: { ...(st.flips || {}), [i]: !f } }) }; }),
+      nameRef: (el) => { this.nameEl = el; }, emailRef: (el) => { this.emailEl = el; }, msgRef: (el) => { this.msgEl = el; },
+      sendMessage: (e) => {
+        e.preventDefault();
+        const n = this.nameEl ? this.nameEl.value.trim() : '', em = this.emailEl ? this.emailEl.value.trim() : '', m = this.msgEl ? this.msgEl.value.trim() : '';
+        const body = m + '\n\n' + n + (em ? ' (' + em + ')' : '');
+        window.location.href = 'mailto:madelynrega@gmail.com?subject=' + encodeURIComponent('Portfolio message from ' + (n || 'a visitor')) + '&body=' + encodeURIComponent(body);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
